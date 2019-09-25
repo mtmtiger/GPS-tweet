@@ -6,7 +6,8 @@
       .user-index__box__select
         %ul
           %li
-            = image_tag(user.image)
+            - if user.image?
+              = image_tag(user.image)
           %li
             = link_to user.name, "/users/#{user.id}"
           %li
