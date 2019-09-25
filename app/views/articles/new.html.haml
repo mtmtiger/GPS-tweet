@@ -1,0 +1,18 @@
+.new-article
+  = render 'shared/header'
+
+  .new-article__box
+    = form_with model: @article, local: true do |f|
+      .new-article__box__form
+        .new-article__box__form__title
+          =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
+        .new-article__box__form__image
+          =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"
+          .new-article__box__form__image__btn
+            %p
+              画像投稿
+        .new-article__box__form__text
+          =f.text_area :text, placeholder: '記事の内容を入力してください'
+        .new-article__box__form__submit
+          =f.submit '投稿する'
+
