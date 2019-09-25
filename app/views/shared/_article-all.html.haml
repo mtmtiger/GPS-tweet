@@ -1,17 +1,20 @@
 .article-view
   .article-view__box
-    .article-view__box__title
-      %p
-        titleを表示
-    .article-view__box__image
-      %p
-        画像を表示
-    .article-view__box__text
-      %p
-        textを表示
-    .article-view__box__edit
-      %ul
-        %li
-          = link_to '編集', root_path
-        %li
-          = link_to '削除', root_path
+    -@articles.each do |article|
+      .article-view__box__title
+        %p
+          = article.title
+      .article-view__box__image
+        %ul
+          - article.images.each do |image|
+            %li
+              = image_tag(image)
+      .article-view__box__text
+        %p
+          = article.text
+      .article-view__box__edit
+        %ul
+          %li
+            = link_to '編集', root_path
+          %li
+            = link_to '削除', root_path

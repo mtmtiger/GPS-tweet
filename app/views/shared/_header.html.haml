@@ -4,7 +4,7 @@
     %ul
       %li
         %p
-          GPS-tweet
+          = link_to 'GPS-tweet', root_path
       %li
         %p
           = link_to '投稿する', new_article_path
@@ -14,3 +14,6 @@
       %li
         %p
           = link_to 'ログイン', new_user_session_path
+      %li
+        %p
+          = link_to 'ログアウト', destroy_user_session_path, method: 'delete'

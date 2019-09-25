@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :move_to_index, except: :index
   def index
-    @article = Article.all.order("created_at ASC")
+    @articles = Article.all.order("created_at ASC")
+    
   end
 
   def new
