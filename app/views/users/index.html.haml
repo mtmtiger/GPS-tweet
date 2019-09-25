@@ -9,3 +9,5 @@
             = image_tag(user.image)
           %li
             = link_to user.name, "/users/#{user.id}"
+          %li
+            = link_to user.prefecture.name, root_path
