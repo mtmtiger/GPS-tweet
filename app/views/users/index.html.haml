@@ -1,0 +1,11 @@
+.user-index
+  = render 'shared/header'
+
+  .user-index__box
+    -@users.each do |user|
+      .user-index__box__select
+        %ul
+          %li
+            = image_tag(user.image)
+          %li
+            = link_to user.name, "/users/#{user.id}"
