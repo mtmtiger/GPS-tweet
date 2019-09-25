@@ -1,2 +1,18 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+.user-show
+  = render 'shared/header'
+
+  .user-show__box
+    .user-show__box__main
+      .user-show__box__image
+        -if @user.image?
+          = @user.image
+      .user-show__box__name
+        = @user.name
+      .user-show__box__prefecture
+        = @user.prefecture.name
+      .user-show__box__menu
+        %ul
+          %li
+            = link_to '編集', root_path
+          %li
+            = link_to '削除', root_path
