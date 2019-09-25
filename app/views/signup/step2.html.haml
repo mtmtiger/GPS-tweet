@@ -1,0 +1,11 @@
+.signup-data
+  .signup-data__box
+  =form_for @user, url: signup_index_path, method: :post do |f|
+    .signup-data__box__name
+      = session[:name]
+    .signup-data__box__password
+      = session[:password]
+    .signup-data__box__prefecture
+      = Prefecture.find(session[:prefecture_id]).name
+    .signup-data__box__submit
+      = f.submit '登録する'
