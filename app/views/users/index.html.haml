@@ -6,9 +6,9 @@
       .user-index__box__select
         %ul
           %li
-            - if user.image?
+            - if user.image.attached?
               = image_tag(user.image)
           %li
-            = link_to user.name, "/users/#{user.id}"
+            = link_to user.name, user_path(user.id)
           %li
             = link_to user.prefecture.name, root_path

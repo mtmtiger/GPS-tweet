@@ -4,8 +4,12 @@
   .user-show__box
     .user-show__box__main
       .user-show__box__image
-        -if @user.image?
-          = @user.image
+        -if @user.image.attached?
+          = image_tag(@user.image)
+        -if @user.id == current_user.id
+          = form_with model: @user, local: true do |f|
+            =f.file_field :image, accept: "image/jpeg, image/png"
+            =f.submit '画像登録'
       .user-show__box__name
         = @user.name
       .user-show__box__prefecture
