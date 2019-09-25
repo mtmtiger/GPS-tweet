@@ -24,6 +24,10 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :address
+    %br/
+    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "select-default"
   .actions
     = f.submit "登録する"
 = render "devise/shared/links"
