@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  resources :articles
+  resources :articles do
+    resources :nices, only: [:create, :destroy]
+  end
   resources :users, only: [:index, :show, :update, :destroy]
 end

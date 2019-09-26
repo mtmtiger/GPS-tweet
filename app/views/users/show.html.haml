@@ -20,3 +20,22 @@
             = link_to '編集', root_path
           %li
             = link_to '削除', root_path
+      .user-show__box__niced-articles
+        - @user.niced_articles.each do |article|
+          .user-show__box__niced-articles__container
+            .article-view__box__title
+              = article.title
+            .article-view__box__image
+              %ul
+                - article.images.each do |image|
+                  %li
+                    = image_tag(image)
+            .article-view__box__text
+              = article.text
+            -if article.id == current_user.id
+              .article-view__box__edit
+                %ul
+                  %li
+                    = link_to '編集', root_path
+                  %li
+                    = link_to '削除', root_path
