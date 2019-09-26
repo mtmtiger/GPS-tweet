@@ -16,7 +16,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.all.order("created_at ASC")
+    @article = Article.find(params[:id])
+    @nice = Nice.new
   end
 
   def edit
