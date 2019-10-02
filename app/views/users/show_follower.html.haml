@@ -1,0 +1,11 @@
+.user-show-follower
+  = render 'shared/header'
+
+  .user-show-follower__box
+    .user-show-follower__box__title
+      = "#{@user.name} さんのフォロワー"
+    - @user.followers.each do |user|
+      .user-show-follower__box__list
+        %ul
+          %li
+            = link_to "#{user.name}", user_path(user)
