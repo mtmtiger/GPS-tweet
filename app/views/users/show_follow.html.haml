@@ -1,0 +1,11 @@
+.user-show-follow
+  = render 'shared/header'
+
+  .user-show-follow__box
+    .user-show-follow__box__title
+      = "#{@user.name} さんのフォロー"
+    - @user.following.each do |user|
+      .user-show-follow__box__list
+        %ul
+          %li
+            = link_to "#{user.name}", user_path(user)

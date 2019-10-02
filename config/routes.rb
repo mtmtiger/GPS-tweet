@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   devise_for :users
   root 'articles#index'
   resources :signup do
@@ -11,5 +13,11 @@ Rails.application.routes.draw do
   resources :articles do
     resources :nices, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :show, :update, :destroy]
+  resources :users do
+    member do
+      get :following
+      get :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 end
