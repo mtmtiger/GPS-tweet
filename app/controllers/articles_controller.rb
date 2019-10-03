@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :move_to_index, except: :index
   def index
     @articles = Article.all.order("created_at ASC")
-    
+    @user = User.find(current_user.id) if user_signed_in?
   end
 
   def new

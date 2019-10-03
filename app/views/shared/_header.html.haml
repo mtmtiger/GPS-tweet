@@ -1,19 +1,54 @@
 .main-header
-  .main-header__image
+  .main-header__images
+    .main-header__images__image
+      = image_tag("fuji.jpg")
+    .main-header__images__image
+      = image_tag("nagoya-TVtower.jpg")
+    .main-header__images__image
+      = image_tag("sapporo-tokeidai.jpg")
   .main-header__menu-box
-    %ul
-      %li
-        %p
-          = link_to 'GPS-tweet', root_path
-      %li
-        %p
-          = link_to '投稿する', new_article_path
-      %li
-        %p
-          = link_to '新規登録', step1_signup_index_path
-      %li
-        %p
-          = link_to 'ログイン', new_user_session_path
-      %li
-        %p
-          = link_to 'ログアウト', destroy_user_session_path, method: 'delete'
+    %ul.main-header__menu-box__ul
+      %li.main-header__menu-box__ul__title
+        %p.main-header__menu-box__ul__title__text
+          = link_to root_path do
+            %i.icon-map-marker
+            GPS-Tweet
+            %i.icon-map-marker
+      %ul.main-header__menu-box__ul__lists
+        - if user_signed_in?
+          %li.main-header__menu-box__ul__lists__list
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to new_article_path do
+                %i.icon-new-article
+                投稿する
+          %li.main-header__menu-box__ul__lists__list
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to destroy_user_session_path, method: 'delete' do
+                %i.icon-sign-out
+                ログアウト
+          %li.main-header__menu-box__ul__lists__list
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to user_path(current_user) do
+                %i.icon-user
+                マイページ
+          %li.main-header__menu-box__ul__lists__list#list-menu
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to root_path do
+                %i.icon-bars
+                メニュー
+        - else
+          %li.main-header__menu-box__ul__lists__list
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to step1_signup_index_path do
+                %i.icon-new-user
+                新規登録
+          %li.main-header__menu-box__ul__lists__list
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to new_user_session_path do
+                %i.icon-user
+                ログイン
+          %li.main-header__menu-box__ul__lists__list#list-menu
+            %p.main-header__menu-box__ul__lists__list__text
+              = link_to root_path do
+                %i.icon-bars
+                メニュー
