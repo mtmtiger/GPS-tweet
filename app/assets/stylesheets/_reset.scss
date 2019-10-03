@@ -6,6 +6,7 @@ html{
 	color:#000;
 	background:#FFF;
 	height: 100%;
+	overflow-y: scroll;
 }
 /*
 	TODO remove settings on BODY since we can't namespace it.
@@ -18,6 +19,10 @@ body{
 	height: 100%;
 }
 
+a {
+	color: rgb(0, 140, 140);
+	text-decoration: none;
+}
 
 body,
 div,

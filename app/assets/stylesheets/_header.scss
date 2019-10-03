@@ -1,0 +1,53 @@
+.main-header {
+  width: calc(100vw - 15px);
+  &__images {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    // overflow: hidden;
+    &__image {
+      height: 100%
+      width 100%;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__menu-box {
+    &__ul {
+      height: 50px;
+      border: solid 3px #ddd;
+      background: #acb6e5;
+      border-radius: 20px;
+      background: -webkit-linear-gradient(to right, #fff, #acb6e5);
+      background: linear-gradient(to bottom, #fff, #acb6e5);
+      &__title {
+        float: left;
+        height: 100%;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 0 0 20px;
+        &__text {
+          font-weight: bold;
+
+        }
+      }
+      &__lists {
+        float: right;
+        display: flex;
+        &__list {
+          height: 100%;
+          line-height: 50px;
+          text-align: center;
+          margin: 0 30px 0 0;
+          display: none;
+        }
+        #list-menu {
+          display: block;
+        }
+      }
+    }
+  }
+}
