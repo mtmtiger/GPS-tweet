@@ -75,3 +75,4 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'active_hash'
 gem 'pry-rails'
+gem 'aws-sdk-s3', require: false
