@@ -2,12 +2,24 @@
   = render 'shared/header'
 
   .user-index__box
-    -@users.each do |user|
-      .user-index__box__select
-        %ul
-          %li
+    .user-index__box__title
+      %p.user-index__box__title__text
+        ユーザー一覧
+    .user-index__box__select
+      %ul.user-index__box__select__lists
+        %li.user-index__box__select__lists__image
+          アイコン
+        %li.user-index__box__select__lists__name
+          ユーザー名
+        %li.user-index__box__select__lists__prefecture
+          都道府県
+      -@users.each do |user|
+        %ul.user-index__box__select__lists
+          %li.user-index__box__select__lists__image
             - if user.image.attached?
-              = image_tag(user.image)
+              = image_tag(user.image, id: "user-image")
+            - else
+              = image_tag("user_no-image.png", id: "user-image")
           %li
             = link_to user.name, user_path(user.id)
           %li
