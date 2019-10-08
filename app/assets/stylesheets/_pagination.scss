@@ -1,0 +1,32 @@
+nav.pagination {
+  width: 480px;
+  display: flex;
+  margin: 20px auto;
+  .icon-pagination-pin, .icon-pagination-current-pin {
+    text-align: center;
+  }
+  ul {
+    margin: 0 10px;
+  }
+  a {
+    display: inline-block;
+    background: linear-gradient(to bottom, #fff, #acb6e5);
+    padding: 0 5px;
+  }
+  a:hover {
+    background: linear-gradient(to bottom, #fff, #ebd395);
+  }
+  .page {
+    font-weight: bold;
+  }
+  .current {
+    display: inline-block;
+    background: linear-gradient(to bottom, #fff, rgb(255, 60, 60));
+    padding: 0 5px;
+  }
+  .first,.prev,.next,.last {
+    line-height: 48px;
+    margin: 0 5px;
+    font-weight: bold;
+  }
+}
