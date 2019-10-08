@@ -8,11 +8,14 @@
     .user-index__box__select
       %ul.user-index__box__select__lists
         %li.user-index__box__select__lists__image
-          アイコン
+          %p
+            アイコン
         %li.user-index__box__select__lists__name
-          ユーザー名
+          %p
+            ユーザー名
         %li.user-index__box__select__lists__prefecture
-          都道府県
+          %p
+            都道府県
       -@users.each do |user|
         %ul.user-index__box__select__lists
           %li.user-index__box__select__lists__image
@@ -24,5 +27,6 @@
             = link_to user.name, user_path(user.id)
           %li
             = link_to user.prefecture.name, root_path
+    .user-index__box__footer
   -# #map
   -# %script{src: "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=" + Rails.application.credentials.dig(:google, :google_api_key).to_s + "&callback=initMap", async: "", defer: "defer"} }
