@@ -9,6 +9,8 @@ class SignupController < ApplicationController
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
     session[:password_confirmation] = user_params[:password_confirmation]
+    session[:sex] = user_params[:sex]
+    session[:age] = user_params[:age]
     session[:prefecture_id] = user_params[:prefecture_id]
     @user = User.new
   end
@@ -19,6 +21,8 @@ class SignupController < ApplicationController
       email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation],
+      sex: session[:sex],
+      age: session[:age],
       prefecture_id: session[:prefecture_id],
     )
     if @user.save
@@ -37,6 +41,6 @@ class SignupController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :prefecture_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:sex, :age, :prefecture_id)
   end
 end

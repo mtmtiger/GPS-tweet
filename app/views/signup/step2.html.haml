@@ -1,11 +1,40 @@
-.signup-data
-  .signup-data__box
+%div
   =form_for @user, url: signup_index_path, method: :post do |f|
-    .signup-data__box__name
-      = session[:name]
-    .signup-data__box__password
-      = session[:password]
-    .signup-data__box__prefecture
-      = Prefecture.find(session[:prefecture_id]).name
-    .signup-data__box__submit
-      = f.submit '登録する'
+    %table.signup-table
+      %caption
+        登録情報の確認
+      %tr
+        %th
+          お名前
+        %td
+          = session[:name]
+      %tr
+        %th
+          Eメール
+        %td
+          = session[:email]
+      %tr
+        %th
+          パスワード  
+        %td
+          = session[:password]
+      %tr
+        %th
+          性別
+        %td
+          = session[:sex]
+      %tr
+        %th
+          年齢  
+        %td
+          = session[:age]
+      %tr
+        %th
+          都道府県
+        %td
+          = Prefecture.find(session[:prefecture_id]).name
+    .signup-btns
+      = link_to :back do
+        %button
+          戻る
+      = f.button "登録する", type: "submit"
