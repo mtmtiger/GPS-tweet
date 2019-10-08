@@ -13,6 +13,12 @@
         %li.user-index__box__select__lists__name
           %p
             ユーザー名
+        %li.user-index__box__select__lists__name
+          %p
+            性別
+        %li.user-index__box__select__lists__name
+          %p
+            年齢
         %li.user-index__box__select__lists__prefecture
           %p
             都道府県
@@ -26,8 +32,12 @@
           %li
             = link_to user.name, user_path(user.id)
           %li
+            = link_to user.sex, root_path
+          %li
+            = link_to user.age, root_path
+          %li
             = link_to user.prefecture.name, root_path
     = paginate(@users)
-    .user-index__box__footer
+  .footer
   -# #map
   -# %script{src: "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=" + Rails.application.credentials.dig(:google, :google_api_key).to_s + "&callback=initMap", async: "", defer: "defer"} }

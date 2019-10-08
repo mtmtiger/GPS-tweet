@@ -1,27 +1,48 @@
-%h2 Sign up
-= form_for @user, url: step2_signup_index_path, method: :get do |f|
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true, autocomplete: "name", maxlength: "8"
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :address
-    %br/
-    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "select-default"
-  .actions
-    = f.submit "登録する"
+%div
+  = render "shared/header"
+  = form_for @user, url: step2_signup_index_path, method: :get do |f|
+    %table.signup-table
+      %caption
+        ユーザー登録
+      %tr
+        %th
+          お名前
+        %td
+          = f.text_field :name, autofocus: true, autocomplete: "name", maxlength: "8", placeholder: "8文字以内" 
+      %tr
+        %th
+          Eメール
+        %td
+          = f.email_field :email, autocomplete: "email"
+      %tr
+        %th
+          パスワード  
+        %td
+          = f.password_field :password, autocomplete: "new-password"
+      %tr
+        %th
+          パスワードの確認 
+        %td
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+      %tr
+        %th
+          性別
+        %td
+          = f.label :sex, :"男性"
+          = f.radio_button :sex, :"男性"
+          = f.label :sex, :"女性"
+          = f.radio_button :sex, :"女性"
+      %tr
+        %th
+          年齢  
+        %td
+          = f.select :age, options_for_select(User.ages.keys), {}, class: "select-default"
+      %tr
+        %th
+          都道府県
+        %td
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "select-default"
+    .signup-btns
+      = f.button "クリア", type: "reset"
+      = f.button "登録する", type: "submit"
+  .footer

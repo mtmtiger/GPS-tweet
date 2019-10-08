@@ -28,8 +28,24 @@ class User < ApplicationRecord
       active_relationships.find_by(followed_id: other_user.id).destroy
     end
    
-    # 現在のユーザーがフォローしてたらtrueを返す
+    # 現在のユーザーがフォローしていたらtrueを返す
     def following?(other_user)
       following.include?(other_user)
     end
+
+  enum age: {
+    "---": nil,
+    "〜１０代": 0,
+    "２０代": 1,
+    "３０代": 2,
+    "４０代": 3,
+    "５０代": 4,
+    "６０代〜": 5
+  }, _prefix: true
+    
+  enum sex: {
+    "---": nil,
+    "男性": 0,
+    "女性": 1
+  }, _prefix: true
 end
