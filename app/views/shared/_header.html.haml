@@ -1,11 +1,20 @@
 .main-header
-  .main-header__images
-    .main-header__images__image
-      = image_tag("fuji.jpg")
-    .main-header__images__image
-      = image_tag("nagoya-TVtower.jpg")
-    .main-header__images__image
-      = image_tag("sapporo-tokeidai.jpg")
+  .main-header__images#slide
+    %ul
+      %li
+        = image_tag("fuji.jpg")
+      %li
+        = image_tag("nagoya-TVtower.jpg")
+      %li
+        = image_tag("sapporo-tokeidai.jpg")
+  #button
+    %ul.image-buttons
+      %li
+        = link_to "1", "/", class: "target"
+      %li
+        = link_to "2", "/"
+      %li
+        = link_to "3", "/"
   .main-header__menu-box
     %ul.main-header__menu-box__ul
       %li.main-header__menu-box__ul__title
