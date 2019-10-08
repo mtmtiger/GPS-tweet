@@ -44,7 +44,7 @@
             %p.main-header__menu-box__ul__lists__list__text
               = link_to root_path do
                 %i.icon-bars
-                メニュー
+                = "#{current_user.name}さんのメニュー"
         - else
           %li.main-header__menu-box__ul__lists__list
             %p.main-header__menu-box__ul__lists__list__text
