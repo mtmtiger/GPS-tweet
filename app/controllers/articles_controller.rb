@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.update(image_params)
     @article.save!
     redirect_to root_path
   end
@@ -41,6 +42,14 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :text, images: []).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text).merge(user_id: current_user.id)
+  end
+
+  def image_params
+    params.require(:new_images).permit(images: [])
+  end
+  
+  def num_params
+    params.require(:new_images).permit(num: [])
   end
 end
