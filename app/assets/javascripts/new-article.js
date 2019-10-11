@@ -74,7 +74,6 @@ $(document).on("turbolinks:load",function() {
         processData: false,
       })
       .done(function(val){
-        console.log("ok")
       })
       .fail(function(val){
         alert('登録できませんでした')

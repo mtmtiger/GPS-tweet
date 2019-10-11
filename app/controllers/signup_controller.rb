@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-
+  before_action :move_to_index
   def step1
     @user = User.new
   end
@@ -39,6 +39,10 @@ class SignupController < ApplicationController
   end
 
   private
+
+  def move_to_index
+    redirect_to root_path if user_signed_in?
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,:sex, :age, :prefecture_id)
