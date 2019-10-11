@@ -10,7 +10,7 @@
               = image_tag(image)
       .article-view__box__text
         = article.text
-      -if user_signed_in? && article.id == current_user.id
+      -if user_signed_in? && article.user_id == current_user.id
         .article-view__box__edit
           %ul
             %li

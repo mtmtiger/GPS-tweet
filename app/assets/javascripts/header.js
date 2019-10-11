@@ -5,15 +5,15 @@ $(document).on("turbolinks:load",function() {
     $("#list-menu").fadeOut(300);
   })
 
-  $(function(){
-    let navPos = $("#header-nav").offset().top;
+  // $(function(){
+  //   let navPos = $("#header-nav").offset().top;
 
-    $(window).scroll(function(){
-      if($(window).scrollTop() > navPos){
-        $("#header-nav").css({"position":"fixed","top":0,"width":"100%"})
-      } else {
-        $("#header-nav").css("position", "static")
-      }
-    })
-  })
+  //   $(window).scroll(function(){
+  //     if($(window).scrollTop() > navPos){
+  //       $("#header-nav").css({"position":"fixed","top":0,"width":"100%"})
+  //     } else {
+  //       $("#header-nav").css("position", "static")
+  //     }
+  //   })
+  // })
 })

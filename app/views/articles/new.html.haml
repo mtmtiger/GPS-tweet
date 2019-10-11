@@ -14,6 +14,21 @@
             -#   画像プレビュー
         .new-article__box__form__text
           =f.text_area :text, placeholder: '記事の内容を入力してください'
-        .new-article__box__form__submit
-          =f.submit '投稿する'
 
+        %p
+          住所や駅名、目印などで検索できます。
+        %form
+          %input{type: "text", value: "",placeholder: "例)東京駅", id: "search"}
+          %button{type: "button", value: "検索", id: "map_button"}
+            検索
+        -# 地図を表示させる要素
+        #map
+
+        %p
+          マーカーのある位置の地図上をクリックするとマーカーを移動できます。
+          = f.text_field :lat, id: "lat", value: ""
+          = f.text_field :lng, id: "lng", value: ""
+          = f.text_field :address, id: "address", value: ""
+          %script{src: "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=" + Rails.application.credentials.dig(:google, :google_api_key).to_s + "&callback=initMap", async: "", defer: "defer"} }
+          .new-article__box__form__submit
+            =f.submit '投稿する'
