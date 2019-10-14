@@ -30,8 +30,7 @@ $(document).on("turbolinks:load",function() {
                                   <img src="${imgURI}">
                                 </figure>
                                 <div class="upload-article-btn">
-                                  <a class="upload-article-edit">編集</a>
-                                  <a class="upload-article-delete" href="/">削除</a>
+                                  <a class="upload-article-delete" href="/">取消</a>
                                 </div>
                               </li>`
 
@@ -119,3 +118,4 @@ $(document).on("turbolinks:load",function() {
     })
   })
 })
+

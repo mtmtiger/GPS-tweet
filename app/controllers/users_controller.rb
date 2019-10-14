@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  def destroy
+    sign_out @user
+    redirect_to root_path
+  end
+
   def following
     @user = User.find(params[:id])
     @users = @user.following

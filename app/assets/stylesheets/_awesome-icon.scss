@@ -67,9 +67,14 @@
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
   animation: rotate-anime 3s linear infinite;
 }
+@keyframes rotate-anime {
+  0%  {transform: rotateY(0);}
+  90% {transform: rotateY(0);}
+  100%  {transform: rotateY(360deg);}
+}
+
 .icon-pagination-current-pin::before {
   color: crimson;
   font-family: "Font Awesome 5 Free";
@@ -82,6 +87,11 @@
   -webkit-font-smoothing: antialiased;
   animation: slow-spin 2s linear infinite;
 }
+@keyframes slow-spin {
+  0%  {transform: rotateY(0);}
+  100%  {transform: rotateY(360deg);}
+}
+
 .icon-pagination-pin::before {
   color: gray;
   font-family: "Font Awesome 5 Free";
@@ -93,12 +103,29 @@
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
-@keyframes rotate-anime {
-  0%  {transform: rotateY(0);}
-  90% {transform: rotateY(0);}
-  100%  {transform: rotateY(360deg);}
+
+.icon-search::before {
+  color: #000;
+  font-family: "Font Awesome 5 Free";
+  content: '\f689';
+  font-size: 20px;
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
-@keyframes slow-spin {
-  0%  {transform: rotateY(0);}
-  100%  {transform: rotateY(360deg);}
+
+.icon-new-images::before {
+  color: #ff0000;
+  font-family: "Font Awesome 5 Free";
+  content: '\f302';
+  font-size: 20px;
+  font-weight: 400;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
