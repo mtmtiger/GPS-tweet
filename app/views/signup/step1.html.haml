@@ -1,4 +1,4 @@
-%div
+.new-user
   = render "shared/header"
   = form_for @user, url: step2_signup_index_path, method: :get do |f|
     %table.signup-table
@@ -18,7 +18,7 @@
         %th
           パスワード  
         %td
-          = f.password_field :password, autocomplete: "new-password", placeholder: "英数字6文字以上"
+          = f.password_field :password, autocomplete: "new-password", maxlength: "12", placeholder: "英数字6文字以上12文字以内"
       %tr
         %th
           パスワードの確認 
@@ -45,4 +45,3 @@
     .signup-btns
       = f.button "クリア", type: "reset"
       = f.button "登録する", type: "submit"
-  .footer

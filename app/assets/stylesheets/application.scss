@@ -9,3 +9,13 @@
 @import 'slide';
 @import 'pagination';
 @import 'step1';
+
+@import url('https://fonts.googleapis.com/css?family=Kosugi+Maru|Varela+Round&display=swap');
+ 
+body {
+  font-family: 'Varela Round', 'Kosugi Maru', sans-serif;
+}
+
+body > div {
+  padding: 90px 0 0 0;
+}

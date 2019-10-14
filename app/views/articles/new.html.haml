@@ -1,34 +1,45 @@
 .new-article
   = render 'shared/header'
 
-  .new-article__box
-    = form_with model: @article, local: true, id: "form_with" do |f|
-      .new-article__box__form
-        .new-article__box__form__title
-          =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
-        .new-article__box__form__image
-          =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"
-          .new-article__box__form__image__preview#preview_box
-            %ul#preview_list
-            -# %p
-            -#   画像プレビュー
-        .new-article__box__form__text
-          =f.text_area :text, placeholder: '記事の内容を入力してください'
-
-        %p
+  = form_with model: @article, local: true, id: "form_with" do |f|
+    .new-article__box
+      .new-article__box__left
+        %p.new-article__box__left__header
+          登録したい地点をクリックするか検索をしてピンをつけよう。
+        %p.new-article__box__left__text
           住所や駅名、目印などで検索できます。
-        %form
-          %input{type: "text", value: "",placeholder: "例)東京駅", id: "search"}
+        #map-search
+          %input{type: "text", value: "",placeholder: "例)東京駅", id: "search",autofocus: "ture"}
           %button{type: "button", value: "検索", id: "map_button"}
-            検索
+            .icon-search
         -# 地図を表示させる要素
         #map
-
-        %p
-          マーカーのある位置の地図上をクリックするとマーカーを移動できます。
-          = f.text_field :lat, id: "lat", value: ""
-          = f.text_field :lng, id: "lng", value: ""
-          = f.text_field :address, id: "address", value: ""
+        %p.new-article__box__left__text
+          地図上をクリックするとピンを移動できます。
+          = f.text_field :lat, id: "lat", value: "", type: "hidden"
+          = f.text_field :lng, id: "lng", value: "", type: "hidden"
+          = f.text_field :address, id: "address", value: "", type: "hidden"
           %script{src: "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=" + Rails.application.credentials.dig(:google, :google_api_key).to_s + "&callback=initMap", async: "", defer: "defer"} }
-          .new-article__box__form__submit
-            =f.submit '投稿する'
+        
+      .new-article__box__right
+        .new-article__box__right__form
+          %p.new-article__box__right__form__header
+            新規投稿
+          .new-article__box__right__form__title
+            =f.label :title, "タイトル"
+            =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
+          .new-article__box__right__form__image
+            =f.label :images do
+              .icon-new-images
+                クリックすると画像が選べます
+            =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"
+          %p#image-preview
+            ※画像を添付した場合プレビューが表示されます
+          .new-article__box__right__form__preview#preview_box
+            %ul#preview_list
+          .new-article__box__right__form__text
+            =f.label :text, "テキスト"
+            =f.text_area :text, placeholder: '記事の内容を入力してください', rows: "4"
+          .new-article__box__right__form__submit
+            =f.submit '投稿する', id: "article-submit"
+          

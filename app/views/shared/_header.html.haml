@@ -1,63 +1,98 @@
 .main-header
-  .main-header__images#slide
-    %ul
-      %li
-        = image_tag("fuji.jpg")
-      %li
-        = image_tag("nagoya-TVtower.jpg")
-      %li
-        = image_tag("sapporo-tokeidai.jpg")
-  #button
-    %ul.image-buttons
-      %li
-        = link_to "1", "/", class: "target"
-      %li
-        = link_to "2", "/"
-      %li
-        = link_to "3", "/"
-  .main-header__menu-box#header-nav
-    %ul.main-header__menu-box__ul
-      %li.main-header__menu-box__ul__title
-        %p.main-header__menu-box__ul__title__text
-          = link_to root_path do
-            %i.icon-map-marker
-            GPS-Tweet
-            %i.icon-map-marker
-      %ul.main-header__menu-box__ul__lists
+  .header
+    .header__icon
+      .header__icon__box
+        %ul.header__icon__box__lists#menu-lists
+          %li.header__icon__box__lists__title
+            = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              .header-menu-icon-top
+                .icon-pagination-pin
+                %p
+                  GPS-Tweet
+                .icon-pagination-pin
+              %span.menu-under-bar
+          %li.header__icon__box__lists__articles
+            = link_to articles_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              .header-menu-icon-top
+                .icon-pagination-pin
+                %p
+                  ARTICLES
+                .icon-pagination-pin
+              %span.menu-under-bar
+          %li.header__icon__box__lists__users
+            = link_to users_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              .header-menu-icon-top
+                .icon-pagination-pin
+                %p
+                  USERS
+                .icon-pagination-pin
+              %span.menu-under-bar
+          - if user_signed_in?
+            %li.header__icon__box__lists__post
+              = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+                .header-menu-icon-top
+                  .icon-pagination-pin
+                  %p
+                    POST
+                  .icon-pagination-pin
+                %span.menu-under-bar
+            %li.header__icon__box__lists__logout{data:"user"}
+              = link_to user_path(current_user.id), method: "delete", class: "header-menu-icon", data: {"turbolinks"=>false} do
+                .header-menu-icon-top
+                  .icon-pagination-pin
+                  %p
+                    LOG-OUT
+                  .icon-pagination-pin
+                %span.menu-under-bar
+          - else
+            %li.header__icon__box__lists__login{data:"user"}
+              = link_to new_user_session_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+                .header-menu-icon-top
+                  .icon-pagination-pin
+                  %p
+                    LOG-IN
+                  .icon-pagination-pin
+                %span.menu-under-bar
+            %li.header__icon__box__lists__signup{data:"user"}
+              = link_to step1_signup_index_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+                .header-menu-icon-top
+                  .icon-pagination-pin
+                  %p
+                    SIGN-IN
+                  .icon-pagination-pin
+                %span.menu-under-bar
+      %button.header__icon__first#menu-first
+        %span.three-first-bar
+      %button.header__icon__open#menu-icon
+        %span.three-open-bar
+      %ul.header__icon__top__lists
         - if user_signed_in?
-          %li.main-header__menu-box__ul__lists__list
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to new_article_path do
-                %i.icon-new-article
-                投稿する
-          %li.main-header__menu-box__ul__lists__list
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to destroy_user_session_path, method: 'delete' do
-                %i.icon-sign-out
-                ログアウト
-          %li.main-header__menu-box__ul__lists__list
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to user_path(current_user) do
-                %i.icon-user
-                マイページ
-          %li.main-header__menu-box__ul__lists__list#list-menu
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to root_path do
-                %i.icon-bars
-                = "#{current_user.name}さんのメニュー"
-        - else
-          %li.main-header__menu-box__ul__lists__list
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to step1_signup_index_path do
-                %i.icon-new-user
-                新規登録
-          %li.main-header__menu-box__ul__lists__list
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to new_user_session_path do
-                %i.icon-user
-                ログイン
-          %li.main-header__menu-box__ul__lists__list#list-menu
-            %p.main-header__menu-box__ul__lists__list__text
-              = link_to root_path do
-                %i.icon-bars
-                メニュー
+          %li.header__icon__top__lists__current
+            = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              %p
+                = "ようこそ #{current_user.name} さん"
+        -else
+          %li.header__icon__top__lists__how
+            = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              %p
+                はじめに
+        %li.header__first__lists__top
+          = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            %p
+              GPS-Tweet
+  -# .main-header__images#slide
+  -#   %ul
+  -#     %li
+  -#       = image_tag("fuji.jpg")
+  -#     %li
+  -#       = image_tag("nagoya-TVtower.jpg")
+  -#     %li
+  -#       = image_tag("sapporo-tokeidai.jpg")
+  -# #button
+  -#   %ul.image-buttons
+  -#     %li
+  -#       = link_to "1", "/", class: "target"
+  -#     %li
+  -#       = link_to "2", "/"
+  -#     %li
+  -#       = link_to "3", "/"
