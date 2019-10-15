@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @users = User.all.page(params[:page]).per(6)
   end
 
   def show
@@ -29,6 +29,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers
     render 'show_follower'
+  end
+
+  def sex
+    @users = User.where(sex: params[:sex]).page(params[:page]).per(6)
+    @users.each do |user|
+      @user = user.sex
+    end
+  end
+  
+  def age
+    @users = User.where(age: params[:age]).page(params[:page]).per(6)
+    @users.each do |user|
+      @user = user.age
+    end
+  end
+
+  def prefecture
+    @users = User.where(prefecture_id: params[:prefecture]).page(params[:page]).per(6)
+    @users.each do |user|
+      @user = user.prefecture.name
+    end
   end
 
   private

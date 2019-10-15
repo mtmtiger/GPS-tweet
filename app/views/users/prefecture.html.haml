@@ -4,7 +4,7 @@
   .user-index__box
     .user-index__box__title
       %p.user-index__box__title__text
-        ユーザー一覧
+        = "#{@user} のユーザー一覧"
     %ul.user-index__box__users#users-list
       -@users.each do |user|
         %li.user-index__box__users__list

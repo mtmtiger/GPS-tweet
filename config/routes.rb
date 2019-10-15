@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       get :following
       get :followers
     end
+    collection do
+      get :sex
+      get :age
+      get :prefecture
+    end
   end
   resources :relationships, only: [:create, :destroy]
 end
