@@ -8,4 +8,4 @@
       .user-show-follower__box__list
         %ul
           %li
-            = link_to "#{user.name}", user_path(user)
+            = link_to "#{user.name}", user_path(user), data: {"turbolinks"=>false}

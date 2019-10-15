@@ -12,4 +12,4 @@
   -else
     .icon-pagination-pin
   %span{class: "page#{' current' if page.current?}"}
-    = link_to_unless page.current?, page, url, {remote: remote, rel: page.rel}
+    = link_to_unless page.current?, page, url, {remote: remote, rel: page.rel, data: {"turbolinks"=>false}}
