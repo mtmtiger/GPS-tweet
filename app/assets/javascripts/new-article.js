@@ -117,5 +117,42 @@ $(document).on("turbolinks:load",function() {
       }
     })
   })
+  $('#article-images').on('dragover',function(e){
+    e.preventDefault();
+  });
+  $('#article-images').on('drop',function(event){
+    event.preventDefault();
+    files = event.originalEvent.dataTransfer.files;
+    for (var i=0; i<files.length; i++) {
+      if(old_array != null) {
+        if (files_array.length >= 3 - old_array.length){
+          break
+        }
+      }
+    files_array.push(files[i])
+
+    reader = new FileReader(),
+    $previewBox = $("#preview_box");
+    $previewList = $("#preview_list");
+    if (old_array.length + files_array.length <= 3){
+
+        reader.onload = (function(e){
+          let imgURI = e.target.result
+          let preview =  `<li class="upload-article">
+                            <figure class="upload-article-figure">
+                              <img src="${imgURI}">
+                            </figure>
+                            <div class="upload-article-btn">
+                              <a class="upload-article-delete" href="/">取消</a>
+                            </div>
+                          </li>`
+
+          $previewList.append(preview)
+        });
+        
+      reader.readAsDataURL(files[i]);
+      } 
+    }
+  }) 
 })
 
