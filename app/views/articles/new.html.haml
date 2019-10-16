@@ -28,7 +28,7 @@
             =f.label :title, "タイトル"
             =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
           .new-article__box__right__form__image
-            =f.label :images do
+            =f.label :images, id: "article-images" do
               .icon-new-images
                 クリックすると画像が選べます
             =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"

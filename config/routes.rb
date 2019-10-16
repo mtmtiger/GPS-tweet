@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'relationships/destroy'
   devise_for :users
   root 'articles#index'
+  resources :mains
   resources :signup do
     collection do
       get 'step1'
