@@ -20,8 +20,8 @@ function initMap() {
         );
         // マップにマーカーを表示する
         var marker = new google.maps.Marker({
-          map : map,             // 対象の地図オブジェクト
-          position : mapLatLng   // 緯度・経度
+          // map : map,             // 対象の地図オブジェクト
+          // position : mapLatLng   // 緯度・経度
         });
 
         map.addListener('click', function(e) {

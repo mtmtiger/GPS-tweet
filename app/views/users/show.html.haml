@@ -2,44 +2,38 @@
   = render 'shared/header'
 
   .user-show__box
-    .user-show__box__main
-      .user-show__box__image
-        -if @user.image.attached?
-          = image_tag(@user.image)
-        -if user_signed_in? && @user.id == current_user.id
-          = form_with model: @user, local: true do |f|
-            =f.file_field :image, accept: "image/jpeg, image/png"
-            =f.submit '画像登録'
-      .user-show__box__name
-        = @user.name
-      .user-show__box__prefecture
-        = @user.prefecture.name
-      .user-show__box__menu
-        %ul
-          %li
-            = link_to '編集', root_path
-          %li
-            = link_to '削除', root_path
-      .user-show__box__niced-articles
-        - @user.niced_articles.each do |article|
-          .user-show__box__niced-articles__container
-            .article-view__box__title
-              = article.title
-            .article-view__box__image
-              %ul
-                - article.images.each do |image|
-                  %li
-                    = image_tag(image)
-            .article-view__box__text
-              = article.text
-            -if user_signed_in? && article.id == current_user.id
-              .article-view__box__edit
-                %ul
-                  %li
-                    = link_to '編集', root_path
-                  %li
-                    = link_to '削除', root_path
-        - @user ||= current_user
+    .user-show__box__left
+      .user-show__box__left__user
+        .user-show__box__left__user__image
+          -if @user.image.attached?
+            = image_tag(@user.image)
+          -else
+            = image_tag("user_no-image.png")
+        .user-show__box__left__user__name
+          = @user.name
+        .user-show__box__left__user__sex
+          %p
+            性別：
+          .user-show__box__left__user__sex__text
+            = @user.sex
+        .user-show__box__left__user__age
+          %p
+            年齢：
+          .user-show__box__left__user__age__text
+            = @user.age
+        .user-show__box__left__user__prefecture
+          %p
+            都道府県：
+          .user-show__box__left__user__prefecture__text
+            = @user.prefecture.name
+        .user-show__box__left__menu
+          -if user_signed_in? && @user.id == current_user.id
+            %ul
+              %li
+                = link_to '編集', root_path
+              %li
+                = link_to '削除', root_path
+        - @user.id != current_user.id
         .user-box__follow
           = link_to "following: #{@user.following.count}", following_user_path(@user), class: "user-box__follow__following-link"
           = link_to "followers: #{@user.followers.count}", followers_user_path(@user), class: "user-box__follow__followers-link"
@@ -51,3 +45,91 @@
             = form_for(current_user.active_relationships.build) do |f|
               %div= hidden_field_tag :followed_id, @user.id
               = f.submit "Follow", class: "btn btn-primary"
+        .user-show__box__niced-articles
+          - @user.niced_articles.each do |article|
+            .user-show__box__niced-articles__container
+              .article-view__box__title
+                = article.title
+              .article-view__box__image
+                %ul
+                  - article.images.each do |image|
+                    %li
+                      = image_tag(image)
+              .article-view__box__text
+                = article.text
+              -if user_signed_in? && article.id == current_user.id
+                .article-view__box__edit
+                  %ul
+                    %li
+                      = link_to '編集', root_path
+                    %li
+                      = link_to '削除', root_path
+    .user-show__box__right
+      .user-show__box__right__info
+        .user-show__box__right__info__tab-top
+          .user-show__box__right__info__tab-top__wave#tab-top
+            = image_tag("tab-top.svg")
+        %ul.user-show__box__right__info__tab#tab-list
+          %li.user-show__box__right__info__tab__menu.active#user-articles
+            .user-show__box__right__info__tab__menu__circle
+            .icon-user-article#tab-icon
+          %li.user-show__box__right__info__tab__menu#nice-users
+            .user-show__box__right__info__tab__menu__circle
+            .icon-nice-users#tab-icon
+          %li.user-show__box__right__info__tab__menu#following-users
+            .user-show__box__right__info__tab__menu__circle
+            .icon-following-users#tab-icon
+            .user-show__box__right__info__tab__menu__following
+              = @user.following.count
+          %li.user-show__box__right__info__tab__menu#followers-users
+            .user-show__box__right__info__tab__menu__circle
+            .icon-followers-users#tab-icon
+            .user-show__box__right__info__tab__menu__followers
+              = @user.followers.count
+      .user-show__box__right__view
+        .user-show__box__right__view__list
+          %ul.user-show__box__right__view__list__articles#slide-lists
+            -@articles.each do |article|
+              %li.user-show__box__right__view__list__articles__show#slide-list
+                = link_to article_path(article.id) do
+                  =image_tag(article.images[0])
+                .user-show__box__right__view__list__articles__show__created-at
+                  .icon-calender
+                  .user-show__box__right__view__list__articles__show__created-at__text
+                    = article.created_at.strftime("%Y/%m/%d(%a)")
+                .user-show__box__right__view__list__articles__show__nice#article-nice-box
+                  -if article.user_id != current_user.id
+                    -if current_user.already_niced?(article)
+                      = button_to article_nice_path(article), method: 'delete', class: "nice-btn active" do
+                        .icon-nice-btn
+                    -else
+                      = button_to article_nices_path(article), class: "nice-btn" do
+                        .icon-nice-btn
+                  -else
+                    .icon-heart
+                  .user-show__box__right__view__list__articles__show__nice__count
+                    = article.nices.count
+                .user-show__box__right__view__list__articles__show__title
+                  = article.title.truncate(15, ommision: "...")
+                %span.user-show__box__right__view__list__articles__show__line
+                .user-show__box__right__view__list__articles__show__user-name
+                  = article.user.name
+                .user-show__box__right__view__list__articles__show__text
+                  = article.text.truncate(75, ommision: "...")
+            .user-show__box__right__view__list__articles__paginate
+              =paginate(@articles)
+            .user-show__box__right__view__list__btn
+              .user-show__box__right__view__list__btn__list#article-slide-btn-list
+                - @user.articles.each_with_index do |article, index|
+                  - if index < 5
+                    .user-show__box__right__view__list__btn__list__dot#user-article-slide-btn
+                      - if index == 0
+                        = link_to "#{index + 1}", "/" ,class:"target"
+                      - else
+                        = link_to "#{index + 1}", "/"
+            .user-show__box__right__view__list__prev#prev-btn
+              .user-show__box__right__view__list__prev__cricle
+              .icon-left-arrow
+            .user-show__box__right__view__list__next#next-btn
+              .user-show__box__right__view__list__next__cricle
+              .icon-right-arrow

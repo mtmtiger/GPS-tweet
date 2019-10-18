@@ -5,7 +5,10 @@
     .new-article__box
       .new-article__box__left
         %p.new-article__box__left__header
-          登録したい地点をクリックするか検索をしてピンをつけよう。
+          登録したい地点をクリックするか検索をして
+          %span
+            ピン
+          をつけよう。
         %p.new-article__box__left__text
           住所や駅名、目印などで検索できます。
         #map-search
@@ -14,7 +17,7 @@
             .icon-search
         #map
         %p.new-article__box__left__text
-          地図上をクリックするとピンを移動できます。
+          地図上をクリックするとピンを指定できます。
           = f.text_field :lat, id: "lat", value: "", type: "hidden"
           = f.text_field :lng, id: "lng", value: "", type: "hidden"
           = f.text_field :address, id: "address", value: "", type: "hidden"
@@ -26,11 +29,15 @@
             新規投稿
           .new-article__box__right__form__title
             =f.label :title, "タイトル"
+            %span.require
+              必須
             =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
           .new-article__box__right__form__image
             =f.label :images, id: "article-images" do
               .icon-new-images
                 クリックすると画像が選べます
+                %span.require
+                  必須
             =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"
           %p#image-preview
             ※画像を添付した場合プレビューが表示されます
@@ -38,6 +45,8 @@
             %ul#preview_list
           .new-article__box__right__form__text
             =f.label :text, "テキスト"
+            %span.require
+              必須
             =f.text_area :text, placeholder: '記事の内容を入力してください', rows: "4"
           .new-article__box__right__form__submit
             =f.submit '投稿する', id: "article-submit"
