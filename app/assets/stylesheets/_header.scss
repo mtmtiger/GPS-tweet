@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   display: flex;
+  z-index: 3000;
   background-color: #fff;
   box-shadow: 0 3px 10px;
   animation: first-header 0.5s linear both;
@@ -48,7 +49,7 @@
     top: 0;
     right: 0;
     height: 100%;
-    z-index: 100;
+    z-index: 3100;
     background-color: #000;
     animation: bg-white 0.5s linear both;
     @keyframes bg-white {
@@ -174,6 +175,7 @@
   top: 0;
   right: 0;
   padding: 28px 22px;
+  cursor: pointer;
   background-color: #fff;
   outline: none;
   border: none;
@@ -212,13 +214,14 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 100;
+  z-index: 3100;
   padding: 28px 22px;
   outline: none;
   border: none;
 }
 .header__icon__open {
   display: none;
+  cursor: pointer;
   animation: bg-open-color 0.5s linear both;
   background-color: #000;
 }
@@ -227,6 +230,7 @@
   100% {background-color: #000;}
 }
 .header__icon__close {
+  cursor: pointer;
   animation: bg-close-color 0.5s 0.4s linear both;
   background-color: #fff;
 }

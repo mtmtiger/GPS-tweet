@@ -1,0 +1,386 @@
+.user-show {
+  height: calc(100% - 90px);
+  &__box {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    &__left {
+      height: 70%;
+      width: 20%;
+      background-color: burlywood;
+      margin-left: 25px;
+      &__user {
+        width: 100%;
+        &__image {
+          width: 80%;
+          padding: 5px 0 0 0;
+          margin: 0 auto;
+          background-color: aquamarine;
+          img {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            border-radius: 100%;
+          }
+        }
+        &__name {
+          font-size: 25px;
+          padding: 10px 0 0 0;
+          margin: 0 0 10px 0;
+          text-align: center;
+          border-bottom: 2px solid #ff0000;
+        }
+        &__sex {
+          font-size: 20px;
+          display: flex;
+          p {
+            width: 50%;
+            text-align: right;
+          }
+          &__text {
+            width: 50%;
+            text-align: center;
+          }
+        }
+        &__age {
+          font-size: 20px;
+          display: flex;
+          p {
+            width: 50%;
+            text-align: right;
+          }
+          &__text {
+            width: 50%;
+            text-align: center;
+          }
+        }
+        &__prefecture {
+          font-size: 20px;
+          display: flex;
+          p {
+            width: 50%;
+            text-align: right;
+          }
+          &__text {
+            width: 50%;
+            text-align: center;
+          }
+        }
+      }
+    }
+    &__right {
+      height: 70%;
+      width: 65%;
+      margin: 0 auto;
+      &__info {
+        height: 113px;
+        position: relative;
+        margin: 0 auto;
+        &__tab-top {
+          height: 33px;
+          width: 100%;
+          &__wave {
+            height: 100%;
+            width: 25%;
+            position: relative;
+            img {
+              position: absolute;
+              bottom: -1px;
+    
+            }
+          }
+        }
+        &__tab {
+          position: absolute;
+          bottom: 0;
+          height: 80px;
+          width: 100%;
+          background-color: #000;
+          display: flex;
+          &__menu {
+            height: 100%;
+            width: 25%;
+            text-align: center;
+            line-height: 80px;
+            position: relative;
+            &__circle {
+              background-color: #fff;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-55%);
+              z-index: 0;
+            }
+            #tab-icon {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+              z-index: 100;
+            }
+            &__following {
+              position: absolute;
+              top: 22%;
+              left: 47%;
+              color: #fff;
+            }
+            &__followers {
+              position: absolute;
+              top: 22%;
+              left: 47%;
+              color: #fff;
+            }
+          }
+          &__menu.active {
+            .user-show__box__right__info__tab__menu__circle {
+              animation: active-circle 0.3s 0.1s ease-in both;
+              @keyframes active-circle {
+                0% {
+                  height: 0;
+                  width: 0;
+                }
+                100% {
+                  height: 80px;
+                  width: 80px;
+                }
+              }
+            }
+            ::before {
+              animation: active-icon 0.3s 0.05s ease-in forwards;
+              @keyframes active-icon {
+                0% {}
+                70% {
+                  transform: translateY(-4px);
+                  color: #fff;
+                }
+                100% {
+                  color: #000;
+                  transform: translateY(-3px);
+                }
+              }
+            }
+            .user-show__box__right__info__tab__menu__following,
+            .user-show__box__right__info__tab__menu__followers {
+              animation: count-color 0.3s 0.1s ease-in both; 
+              @keyframes count-color {
+                0% {}
+                70% {
+                  transform: translateY(-4px);
+                  color: #fff;
+                }
+                100% {
+                  color: #000;
+                  transform: translateY(-3px);
+                }
+              }
+            }
+          }
+        }
+      }
+      &__view {
+        height: 470px;
+        width: 100%;
+        &__list{
+          height: 100%;
+          width: 100%;
+          position: relative;
+          &__articles {
+            height: 100%;
+            width: 100%;
+            &__show {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              img {
+                height: 100%;
+                width: 100%;
+                filter: brightness(90%) contrast(70%);
+              }
+              &__created-at {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #fff;
+                display: flex;
+                &__text {
+                  font-size: 20px;
+                  margin: auto;
+                  margin-left: 10px;
+                }
+              }
+              &__nice {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                .nice-btn {
+                  background-color: #999;
+                  border: 1px solid #999;
+                  border-radius: 50%;
+                  height: 60px;
+                  width: 60px;
+                  position: relative;
+                }
+                .nice-btn.active {
+                  background-color: #ff0000;
+                  border: 1px solid #ff0000;
+                  border-radius: 50%;
+                  height: 60px;
+                  width: 60px;
+                  position: relative;
+                }
+                &__count {
+                  color: #fff;
+                  font-weight: bold;
+                  text-align: center;
+                }
+                .icon-heart {
+                  text-align: center;
+                }
+              }
+              &__title {
+                width: 90%;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                color: #fff;
+                font-size: 50px;
+                font-weight: bold;
+                text-align: center;
+              }
+              &__line {
+                height: 3px;
+                width: 5%;
+                background-color: #ff0000;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+              }
+              &__user-name {
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                color: #fff;
+                font-size: 25px;
+              }
+              &__text {
+                width: 90%;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%,0);
+                color: #fff;
+                font-size: 25px;
+                word-break: keep-all;
+                
+                opacity: 0;
+              }
+            }
+            &__show:hover {
+              img {
+                animation: image-color 0.3s ease-in both;
+                @keyframes image-color {
+                  100% {filter: brightness(60%) contrast(50%);}
+                }
+              }
+              .user-show__box__right__view__list__articles__show__title {
+                animation: title-up 0.3s ease-in both;
+                @keyframes title-up {
+                  100% {top: 20%;}
+                }
+              }
+              .user-show__box__right__view__list__articles__show__line {
+                animation: line-up 0.3s ease-in both;
+                @keyframes line-up {
+                  100% {
+                    top: 30%;
+                    width: 50%;
+                  }
+                }
+              }
+              .user-show__box__right__view__list__articles__show__user-name {
+                animation: user-name-up 0.3s ease-in both;
+                @keyframes user-name-up {
+                  100% {top: 40%;}
+                }
+              }
+              .user-show__box__right__view__list__articles__show__text {
+                animation: text-up 0.3s ease-in both;
+                @keyframes text-up {
+                  0% {
+                    height: 0;
+                  }
+                  100% {
+                    height: 20%;
+                    bottom: 10%;
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+            &__paginate {
+              position: absolute;
+              bottom: -15%;
+              left: 50%;
+              transform: translate(-50%,0);
+            }
+          }
+          &__btn {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            &__list {
+              display: flex;
+              &__dot {
+                display: flex;
+              }
+              &__dot a {
+                text-indent: -9999px;
+                text-decoration: none;
+                display: block;
+                width: 14px;
+                height: 14px;
+                border-radius: 7px;
+                background: #eee;
+              }
+              &__dot a.target {
+                background: #999;
+              }
+              &__dot:not(:first-child) {
+                margin-left: 20px;
+              }
+            }
+          }
+          &__prev {
+            height: 100%;
+            width: 8%;
+            position: absolute;
+            top: 0;
+            left: -8%;
+            .icon-left-arrow {
+              position: absolute;
+              top: 45%;
+              left: 30%;
+            }
+          }
+          &__next {
+            height: 100%;
+            width: 8%;
+            position: absolute;
+            top: 0;
+            right: -8%;
+            .icon-right-arrow {
+              position: absolute;
+              top: 45%;
+              right: 30%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

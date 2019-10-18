@@ -2,6 +2,7 @@ nav.pagination {
   display: flex;
   margin: 0 auto;
   .icon-pagination-pin, .icon-pagination-current-pin {
+    width: 100%;
     text-align: center;
   }
   ul {
@@ -9,17 +10,31 @@ nav.pagination {
   }
   a {
     display: inline-block;
+    border-radius: 100%;
     background: linear-gradient(to bottom, #fff, #acb6e5);
+    box-shadow: 0 2px 3px #acb6e5;
     padding: 0 5px;
   }
   a:hover {
     background: linear-gradient(to bottom, #fff, #ebd395);
+    box-shadow: 0 2px 3px #ebd395;
+  }
+  a:active {
+    animation: page-btn 0.05s linear both;
+    @keyframes page-btn {
+      0% {}
+      100% {
+        box-shadow: none;
+        transform: translateY(2px);
+      }
+    }
   }
   .page {
     font-weight: bold;
   }
   .current {
     display: inline-block;
+    border-radius: 100%;
     background: linear-gradient(to bottom, #fff, rgb(255, 60, 60));
     padding: 0 5px;
   }
