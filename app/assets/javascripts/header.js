@@ -79,4 +79,20 @@ $(document).on("turbolinks:load",function() {
     $("#header-explain p").hide()
     $("#header-explain").toggleClass('hover')
   })
+
+  $("#menu-lists li span").on('mouseover',function(){
+    $("#header-explain").show()
+    $("#header-explain p").hide()
+    $("#header-explain").toggleClass('hover')
+    let headerId =$(this).parent().attr("id")
+    function headerExplain(headerId){
+      $("#" + headerId + "-explain").show()
+    }
+    headerExplain(headerId)
+  })
+  $("#menu-lists li span").on('mouseleave',function(){
+    $("#header-explain").hide()
+    $("#header-explain p").hide()
+    $("#header-explain").toggleClass('hover')
+  })
 })

@@ -140,19 +140,64 @@
                 .user-show__box__right__view__list__articles__next__cricle
                 .icon-right-arrow
           .user-show__box__right__view__list__nices#nices-box
+            - if @user.niced_articles.present?
+              .user-show__box__right__view__list__nices__exist
+            - else
+              .user-show__box__right__view__list__nices__not-exist
+                .user-show__box__right__view__list__nices__not-exist__text
+                  いいね！した記事はありません
           .user-show__box__right__view__list__following#following-box
             - if @user.following.present?
-              .user-show__box__right__view__list__following__exist
+              %ul.user-show__box__right__view__list__following__exist
                 - @user.following.each do |following|
-                  .user-show__box__right__view__list__following__exist__name
-                    = following.name
+                  = link_to user_path(following.id), data: {"turbolinks"=>false} do
+                    %li.user-show__box__right__view__list__following__exist__list
+                      .user-show__box__right__view__list__following__exist__list__left
+                        .user-show__box__right__view__list__following__exist__list__left__image
+                          -if following.image.attached?
+                            = image_tag(following.image)
+                          -else
+                            = image_tag("user_no-image.png")
+                      .user-show__box__right__view__list__following__exist__list__right
+                        %ul.user-show__box__right__view__list__following__exist__list__right__top
+                          %li.user-show__box__right__view__list__following__exist__list__right__top__name
+                            = following.name
+                          %li.user-show__box__right__view__list__following__exist__list__right__top__sex
+                            = following.sex
+                          %li.user-show__box__right__view__list__following__exist__list__right__top__age
+                            = following.age
+                          %li.user-show__box__right__view__list__following__exist__list__right__top__prefecture
+                            = following.prefecture.name
+                        .user-show__box__right__view__list__following__exist__list__right__bottom
+                          .user-show__box__right__view__list__following__exist__list__right__bottom__profile
             - else
               .user-show__box__right__view__list__following__not-exist
                 .user-show__box__right__view__list__following__not-exist__text
                   フォローしたユーザーはいません
           .user-show__box__right__view__list__followers#followers-box
             - if @user.followers.present?
-              .user-show__box__right__view__list__followers__exist
+              %ul.user-show__box__right__view__list__followers__exist
+                - @user.followers.each do |follower|
+                  = link_to user_path(follower.id), data: {"turbolinks"=>false} do
+                    %li.user-show__box__right__view__list__followers__exist__list
+                      .user-show__box__right__view__list__followers__exist__list__left
+                        .user-show__box__right__view__list__followers__exist__list__left__image
+                          -if follower.image.attached?
+                            = image_tag(follower.image)
+                          -else
+                            = image_tag("user_no-image.png")
+                      .user-show__box__right__view__list__followers__exist__list__right
+                        %ul.user-show__box__right__view__list__followers__exist__list__right__top
+                          %li.user-show__box__right__view__list__followers__exist__list__right__top__name
+                            = follower.name
+                          %li.user-show__box__right__view__list__followers__exist__list__right__top__sex
+                            = follower.sex
+                          %li.user-show__box__right__view__list__followers__exist__list__right__top__age
+                            = follower.age
+                          %li.user-show__box__right__view__list__followers__exist__list__right__top__prefecture
+                            = follower.prefecture.name
+                        .user-show__box__right__view__list__followers__exist__list__right__bottom
+                          .user-show__box__right__view__list__followers__exist__list__right__bottom__profile
             - else
               .user-show__box__right__view__list__followers__not-exist
                 .user-show__box__right__view__list__followers__not-exist__text
