@@ -6,12 +6,20 @@ $(document).on("turbolinks:load",function() {
       $("#tab-top").animate({"left": leftPosition}, 400, 'swing')
     }
     if($(this).attr("id") == "user-articles") {
+      $("#tab-views").children().hide()
+      $("#slide-lists").show()
       waveAnime("0%");
     } else if($(this).attr("id") == "nice-users") {
+      $("#tab-views").children().hide()
+      $("#nices-box").show()
       waveAnime("25%");
     } else if($(this).attr("id") == "following-users") {
+      $("#tab-views").children().hide()
+      $("#following-box").show()
       waveAnime("50%")
     } else if($(this).attr("id") == "followers-users") {
+      $("#tab-views").children().hide()
+      $("#followers-box").show()
       waveAnime("75%")
     }
   })

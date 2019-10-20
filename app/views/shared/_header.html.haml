@@ -3,64 +3,65 @@
     .header__icon
       .header__icon__box
         %ul.header__icon__box__lists#menu-lists
-          %li.header__icon__box__lists__title
+          %li.header__icon__box__lists__title#header-title
             = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                .icon-pagination-pin
+                -# .icon-pagination-pin
                 %p
                   GPS-Tweet
-                .icon-pagination-pin
+                -# .icon-pagination-pin
               %span.menu-under-bar
-          %li.header__icon__box__lists__articles
+          %li.header__icon__box__lists__articles#header-articles
             = link_to articles_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                .icon-pagination-pin
+                -# .icon-pagination-pin
                 %p
-                  ARTICLES
-                .icon-pagination-pin
+                  Articles
+                -# .icon-pagination-pin
               %span.menu-under-bar
-          %li.header__icon__box__lists__users
+          %li.header__icon__box__lists__users#header-users
             = link_to users_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                .icon-pagination-pin
+                -# .icon-pagination-pin
                 %p
-                  USERS
-                .icon-pagination-pin
-              %span.menu-under-bar
+                  Users
+                  %span.menu-under-bar
+                -# .icon-pagination-pin
           - if user_signed_in?
-            %li.header__icon__box__lists__post
+            %li.header__icon__box__lists__post#header-post
               = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  .icon-pagination-pin
+                  -# .icon-pagination-pin
                   %p
-                    POST
-                  .icon-pagination-pin
+                    Post
+                  -# .icon-pagination-pin
                 %span.menu-under-bar
-            %li.header__icon__box__lists__logout{data:"user"}
+            %li.header__icon__box__lists__logout#header-logout{data:"user"}
               = link_to user_path(current_user.id), method: "delete", class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  .icon-pagination-pin
+                  -# .icon-pagination-pin
                   %p
-                    LOG-OUT
-                  .icon-pagination-pin
+                    Log out
+                  -# .icon-pagination-pin
                 %span.menu-under-bar
           - else
-            %li.header__icon__box__lists__login{data:"user"}
+            %li.header__icon__box__lists__login#header-login{data:"user"}
               = link_to new_user_session_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  .icon-pagination-pin
+                  -# .icon-pagination-pin
                   %p
-                    LOG-IN
-                  .icon-pagination-pin
+                    Log in
+                  -# .icon-pagination-pin
                 %span.menu-under-bar
-            %li.header__icon__box__lists__signup{data:"user"}
+            %li.header__icon__box__lists__signup#header-signup{data:"user"}
               = link_to step1_signup_index_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  .icon-pagination-pin
+                  -# .icon-pagination-pin
                   %p
-                    SIGN-IN
-                  .icon-pagination-pin
+                    Sign up
+                  -# .icon-pagination-pin
                 %span.menu-under-bar
+      %ul.header__icon__explain
       %button.header__icon__first#menu-first
         %span.three-first-bar
       %button.header__icon__open#menu-icon
@@ -80,3 +81,18 @@
           = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
             %p
               GPS-Tweet
+    .header__explain#header-explain
+      %P#header-title-explain
+        "ホームへ戻ります"
+      %p#header-articles-explain
+        "投稿記事の一覧を表示します"
+      %p#header-users-explain
+        "ユーザーの一覧を表示します"
+      %p#header-post-explain
+        "記事投稿ページを表示します"
+      %p#header-logout-explain
+        "ログアウトします"
+      %p#header-login-explain
+        "ログイン画面を表示します"
+      %p#header-signup-explain
+        "ユーザー登録画面を表示します"
