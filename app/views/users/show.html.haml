@@ -45,25 +45,25 @@
             = form_for(current_user.active_relationships.build) do |f|
               %div= hidden_field_tag :followed_id, @user.id
               = f.submit "Follow", class: "btn btn-primary"
-        .user-show__box__niced-articles
-          - @user.niced_articles.each do |article|
-            .user-show__box__niced-articles__container
-              .article-view__box__title
-                = article.title
-              .article-view__box__image
-                %ul
-                  - article.images.each do |image|
-                    %li
-                      = image_tag(image)
-              .article-view__box__text
-                = article.text
-              -if user_signed_in? && article.id == current_user.id
-                .article-view__box__edit
-                  %ul
-                    %li
-                      = link_to '編集', root_path
-                    %li
-                      = link_to '削除', root_path
+        -# .user-show__box__niced-articles
+        -#   - @user.niced_articles.each do |article|
+        -#     .user-show__box__niced-articles__container
+        -#       .article-view__box__title
+        -#         = article.title
+        -#       .article-view__box__image
+        -#         %ul
+        -#           - article.images.each do |image|
+        -#             %li
+        -#               = image_tag(image)
+        -#       .article-view__box__text
+        -#         = article.text
+        -#       -if user_signed_in? && article.id == current_user.id
+        -#         .article-view__box__edit
+        -#           %ul
+        -#             %li
+        -#               = link_to '編集', root_path
+        -#             %li
+        -#               = link_to '削除', root_path
     .user-show__box__right
       .user-show__box__right__info
         .user-show__box__right__info__tab-top
@@ -87,49 +87,73 @@
             .user-show__box__right__info__tab__menu__followers
               = @user.followers.count
       .user-show__box__right__view
-        .user-show__box__right__view__list
+        .user-show__box__right__view__list#tab-views
           %ul.user-show__box__right__view__list__articles#slide-lists
-            -@articles.each do |article|
-              %li.user-show__box__right__view__list__articles__show#slide-list
-                = link_to article_path(article.id) do
-                  =image_tag(article.images[0])
-                .user-show__box__right__view__list__articles__show__created-at
-                  .icon-calender
-                  .user-show__box__right__view__list__articles__show__created-at__text
-                    = article.created_at.strftime("%Y/%m/%d(%a)")
-                .user-show__box__right__view__list__articles__show__nice#article-nice-box
-                  -if article.user_id != current_user.id
-                    -if current_user.already_niced?(article)
-                      = button_to article_nice_path(article), method: 'delete', class: "nice-btn active" do
-                        .icon-nice-btn
+            - if @articles.present?
+              -@articles.each do |article|
+                %li.user-show__box__right__view__list__articles__show#slide-list
+                  = link_to article_path(article.id) do
+                    =image_tag(article.images[0])
+                  .user-show__box__right__view__list__articles__show__created-at
+                    .icon-calender
+                    .user-show__box__right__view__list__articles__show__created-at__text
+                      = article.created_at.strftime("%Y/%m/%d(%a)")
+                  .user-show__box__right__view__list__articles__show__nice#article-nice-box
+                    -if article.user_id != current_user.id
+                      -if current_user.already_niced?(article)
+                        = button_to article_nice_path(article), method: 'delete', class: "nice-btn active" do
+                          .icon-nice-btn
+                      -else
+                        = button_to article_nices_path(article), class: "nice-btn" do
+                          .icon-nice-btn
                     -else
-                      = button_to article_nices_path(article), class: "nice-btn" do
-                        .icon-nice-btn
-                  -else
-                    .icon-heart
-                  .user-show__box__right__view__list__articles__show__nice__count
-                    = article.nices.count
-                .user-show__box__right__view__list__articles__show__title
-                  = article.title.truncate(15, ommision: "...")
-                %span.user-show__box__right__view__list__articles__show__line
-                .user-show__box__right__view__list__articles__show__user-name
-                  = article.user.name
-                .user-show__box__right__view__list__articles__show__text
-                  = article.text.truncate(75, ommision: "...")
-            .user-show__box__right__view__list__articles__paginate
-              =paginate(@articles)
-            .user-show__box__right__view__list__btn
-              .user-show__box__right__view__list__btn__list#article-slide-btn-list
-                - @user.articles.each_with_index do |article, index|
-                  - if index < 5
-                    .user-show__box__right__view__list__btn__list__dot#user-article-slide-btn
-                      - if index == 0
-                        = link_to "#{index + 1}", "/" ,class:"target"
-                      - else
-                        = link_to "#{index + 1}", "/"
-            .user-show__box__right__view__list__prev#prev-btn
-              .user-show__box__right__view__list__prev__cricle
-              .icon-left-arrow
-            .user-show__box__right__view__list__next#next-btn
-              .user-show__box__right__view__list__next__cricle
-              .icon-right-arrow
+                      .icon-heart
+                    .user-show__box__right__view__list__articles__show__nice__count
+                      = article.nices.count
+                  .user-show__box__right__view__list__articles__show__title
+                    = article.title.truncate(15, ommision: "...")
+                  %span.user-show__box__right__view__list__articles__show__line
+                  .user-show__box__right__view__list__articles__show__user-name
+                    = article.user.name
+                  .user-show__box__right__view__list__articles__show__text
+                    = article.text.truncate(75, ommision: "...")
+            - else
+              .user-show__box__right__view__list__articles__no-show
+                .user-show__box__right__view__list__articles__no-show__text
+                  投稿した記事がありません
+            - if @articles_count.count > 5
+              .user-show__box__right__view__list__articles__paginate
+                =paginate(@articles)
+              .user-show__box__right__view__list__articles__btn
+                .user-show__box__right__view__list__articles__btn__list#article-slide-btn-list
+                  - @user.articles.each_with_index do |article, index|
+                    - if index < 5
+                      .user-show__box__right__view__list__articles__btn__list__dot#user-article-slide-btn
+                        - if index == 0
+                          = link_to "#{index + 1}", "/" ,class:"target"
+                        - else
+                          = link_to "#{index + 1}", "/"
+              .user-show__box__right__view__list__articles__prev#prev-btn
+                .user-show__box__right__view__list__articles__prev__cricle
+                .icon-left-arrow
+              .user-show__box__right__view__list__articles__next#next-btn
+                .user-show__box__right__view__list__articles__next__cricle
+                .icon-right-arrow
+          .user-show__box__right__view__list__nices#nices-box
+          .user-show__box__right__view__list__following#following-box
+            - if @user.following.present?
+              .user-show__box__right__view__list__following__exist
+                - @user.following.each do |following|
+                  .user-show__box__right__view__list__following__exist__name
+                    = following.name
+            - else
+              .user-show__box__right__view__list__following__not-exist
+                .user-show__box__right__view__list__following__not-exist__text
+                  フォローしたユーザーはいません
+          .user-show__box__right__view__list__followers#followers-box
+            - if @user.followers.present?
+              .user-show__box__right__view__list__followers__exist
+            - else
+              .user-show__box__right__view__list__followers__not-exist
+                .user-show__box__right__view__list__followers__not-exist__text
+                  フォロワーはいません

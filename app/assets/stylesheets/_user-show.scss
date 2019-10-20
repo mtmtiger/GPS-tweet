@@ -321,62 +321,144 @@
                 }
               }
             }
+            &__no-show {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              background-color: #ddd;
+              &__text {
+                width: 100%;
+                font-size: 30px;
+                text-align: center;
+                padding: 5px 0;
+                background-color: #eee;
+                color: #fff;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+              }
+            }
             &__paginate {
               position: absolute;
               bottom: -15%;
               left: 50%;
               transform: translate(-50%,0);
             }
-          }
-          &__btn {
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            transform: translateX(-50%);
-            &__list {
-              display: flex;
-              &__dot {
+            &__btn {
+              position: absolute;
+              top: 90%;
+              left: 50%;
+              transform: translateX(-50%);
+              &__list {
                 display: flex;
+                &__dot {
+                  display: flex;
+                }
+                &__dot a {
+                  text-indent: -9999px;
+                  text-decoration: none;
+                  display: block;
+                  width: 14px;
+                  height: 14px;
+                  border-radius: 7px;
+                  background: #eee;
+                }
+                &__dot a.target {
+                  background: #999;
+                }
+                &__dot:not(:first-child) {
+                  margin-left: 20px;
+                }
               }
-              &__dot a {
-                text-indent: -9999px;
-                text-decoration: none;
-                display: block;
-                width: 14px;
-                height: 14px;
-                border-radius: 7px;
-                background: #eee;
+            }
+            &__prev {
+              height: 100%;
+              width: 8%;
+              position: absolute;
+              top: 0;
+              left: -8%;
+              .icon-left-arrow {
+                position: absolute;
+                top: 45%;
+                left: 30%;
               }
-              &__dot a.target {
-                background: #999;
-              }
-              &__dot:not(:first-child) {
-                margin-left: 20px;
+            }
+            &__next {
+              height: 100%;
+              width: 8%;
+              position: absolute;
+              top: 0;
+              right: -8%;
+              .icon-right-arrow {
+                position: absolute;
+                top: 45%;
+                right: 30%;
               }
             }
           }
-          &__prev {
+          &__following {
             height: 100%;
-            width: 8%;
-            position: absolute;
-            top: 0;
-            left: -8%;
-            .icon-left-arrow {
-              position: absolute;
-              top: 45%;
-              left: 30%;
+              width: 100%;
+              position: relative;
+              display: none;
+            &__exist {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              &__name {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+              }
+            }
+            &__not-exist {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              background-color: #ddd;
+              &__text {
+                width: 100%;
+                font-size: 30px;
+                text-align: center;
+                padding: 5px 0;
+                background-color: #eee;
+                color: #fff;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+              }
             }
           }
-          &__next {
+          &__followers {
             height: 100%;
-            width: 8%;
-            position: absolute;
-            top: 0;
-            right: -8%;
-            .icon-right-arrow {
-              position: absolute;
-              top: 45%;
-              right: 30%;
+            width: 100%;
+            position: relative;
+            display: none;
+            &__exist {
+              height: 100%;
+              width: 100%;
+              position: relative;
+            }
+            &__not-exist {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              background-color: #ddd;
+              &__text {
+                width: 100%;
+                font-size: 30px;
+                text-align: center;
+                padding: 5px 0;
+                background-color: #eee;
+                color: #fff;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+              }
             }
           }
         }

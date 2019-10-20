@@ -63,4 +63,20 @@ $(document).on("turbolinks:load",function() {
     $(this).toggleClass('header__icon__open')
     $(".three-open-bar").toggleClass('three-close-bar')
   })
+
+  $("#menu-lists li").on('mouseover',function(){
+    $("#header-explain").show()
+    $("#header-explain p").hide()
+    $("#header-explain").toggleClass('hover')
+    let headerId =$(this).attr("id")
+    function headerExplain(headerId){
+      $("#" + headerId + "-explain").show()
+    }
+    headerExplain(headerId)
+  })
+  $("#menu-lists li").on('mouseleave',function(){
+    $("#header-explain").hide()
+    $("#header-explain p").hide()
+    $("#header-explain").toggleClass('hover')
+  })
 })
