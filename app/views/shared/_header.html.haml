@@ -25,8 +25,8 @@
                 -# .icon-pagination-pin
                 %p
                   Users
-                  %span.menu-under-bar
                 -# .icon-pagination-pin
+              %span.menu-under-bar
           - if user_signed_in?
             %li.header__icon__box__lists__post#header-post
               = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
