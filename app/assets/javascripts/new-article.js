@@ -4,7 +4,7 @@ $(document).on("turbolinks:load",function() {
     files_array = []
     old_array = []
 
-    if(document.URL.match("items" && "edit")){
+    if(document.URL.match("articles") && document.URL.match("edit")){
       old_array = gon.img_array
     }
 
@@ -19,7 +19,6 @@ $(document).on("turbolinks:load",function() {
         files_array.push(files[i])
 
         reader = new FileReader(),
-        $previewBox = $("#preview_box");
         $previewList = $("#preview_list");
         if (old_array.length + files_array.length <= 3){
 
@@ -45,7 +44,7 @@ $(document).on("turbolinks:load",function() {
     $(document).on('click','#preview_box .upload-article-delete', function(e){
       e.preventDefault();
       var index = $("#preview_box .upload-article-delete").index(this);
-      if(document.URL.match("items" && "edit")){
+      if(document.URL.match("articles") && document.URL.match("edit")){
         var num = $(this).parent().parent().attr('id');
         if(num != undefined){
         num_array.push(num)
@@ -83,7 +82,7 @@ $(document).on("turbolinks:load",function() {
     $("#form_with_edit").on('submit', function(e){
       e.preventDefault();
       var formData = new FormData($(this).get(0));
-      let id = gon.item.id
+      let id = gon.article.id
 
       files_array.forEach(function(file){
         formData.append("new_images[images][]", file)
@@ -132,7 +131,6 @@ $(document).on("turbolinks:load",function() {
     files_array.push(files[i])
 
     reader = new FileReader(),
-    $previewBox = $("#preview_box");
     $previewList = $("#preview_list");
     if (old_array.length + files_array.length <= 3){
 

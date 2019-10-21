@@ -46,6 +46,7 @@ class User < ApplicationRecord
   enum sex: {
     "---": nil,
     "男性": 0,
-    "女性": 1
+    "女性": 1,
+    "その他": 2
   }, _prefix: true
 end

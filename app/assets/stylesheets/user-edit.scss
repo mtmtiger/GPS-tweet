@@ -1,0 +1,267 @@
+.user-edit {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  .user-edit-image {
+    height: 100%;
+    width: 100%;
+    filter: blur(5px);
+    position: absolute;
+  }
+  
+  &__box {
+    height: 100%;
+    width: 100%;
+    padding: 150px 0 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    &__form {
+      height: 100%;
+      width: 100%;
+      &__table {
+        height: 650px;
+        width: 60%;
+        background-color: #fff;
+        box-shadow: 5px 5px #333;
+        margin: 0 auto;
+        &__title {
+          font-size: 30px;
+          margin: 0 10px;
+          text-align: center;
+          line-height: 50px;
+          padding: 10px;
+          border-bottom: 3px solid #ff0000;
+        }
+        &__name {
+          width: 100%;
+          display: flex;
+          &__header {
+            width: 20%;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 40px;
+            border-right: 2px solid #bbb;
+          }
+          &__input {
+            width: 80%;
+            line-height: 60px;
+            margin-left: 20px;
+            input {
+              height: 30px;
+              width: 30%;
+              outline: none;
+            }
+            input:focus {
+              background-color: #ffffee;
+              outline: none;
+              border-left: 5px solid #ffa700;
+            }
+          }
+        }
+        &__image {
+          width: 100%;
+          display: flex;
+          &__header {
+            width: 20%;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 40px;
+            border-right: 2px solid #bbb;
+          }
+          &__input {
+            width: 80%;
+            margin-left: 20px;
+            .file_image {
+              display: none;
+            }
+          }
+        }
+        &__preview {
+          width: 100%;
+          display: flex;
+          &__header {
+            width: 20%;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 130px;
+            border-right: 2px solid #bbb;
+          }
+          &__input {
+            width: 80%;
+            margin-left: 20px;
+            #preview_list {
+              .upload-user {
+                list-style: none;
+                img {
+                  height: 100px;
+                  width: 100px;
+                  border-radius: 50%;
+                }
+              }
+            }
+          }
+        }
+        &__sex {
+          width: 100%;
+          display: flex;
+          &__header {
+            width: 20%;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 40px;
+            border-right: 2px solid #bbb;
+          }
+          &__input {
+            width: 80%;
+            margin-left: 20px;
+            line-height: 60px;
+            input {
+              width: 20%;
+              outline: none;
+              cursor: pointer;
+            }
+          }
+        }
+        &__list {
+          display: flex;
+          &__age {
+            width: 100%;
+            display: flex;
+            &__header {
+              width: 42.5%;
+              text-align: center;
+              margin: 10px 0;
+              line-height: 40px;
+              border-right: 2px solid #bbb;
+            }
+            &__input {
+              width: 60%;
+              margin-left: 20px;
+              line-height: 60px;
+              select {
+                height: 30px;
+                width: 80%;
+                outline: none;
+              }
+            }
+          }
+          &__prefecture {
+            width: 100%;
+            display: flex;
+            &__header {
+              width: 40%;
+              text-align: center;
+              margin: 10px 0;
+              line-height: 40px;
+              border-right: 2px solid #bbb;
+            }
+            &__input {
+              width: 60%;
+              margin-left: 20px;
+              line-height: 60px;
+              select {
+                height: 30px;
+                width: 80%;
+                outline: none;
+              }
+            }
+          }
+        }
+        &__profile {
+          width: 100%;
+          display: flex;
+          &__header {
+            width: 20%;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 40px;
+            border-right: 2px solid #bbb;
+          }
+          &__input {
+            width: 80%;
+            margin-left: 20px;
+            textarea {
+              height: 100%;
+              width: 80%;
+              outline: none;
+            }
+            textarea:focus {
+              background-color: #ffffee;
+              outline: none;
+              border-left: 5px solid #ffa700;
+            }
+          }
+        }
+        &__submit {
+          margin: 30px 0 0;
+          display: flex;
+          justify-content: space-around;
+          .user-edit-reset-btn {
+            height: 50px;
+            width: 200px;
+            color: #fff;
+            font-size: 20px;
+            outline: none;
+            background-color: #ff4444;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+          }
+          .user-edit-reset-btn:active {
+            height: 50px;
+            width: 200px;
+            color: #fff;
+            font-size: 20px;
+            outline: none;
+            background-color: #ff4444;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
+          }
+          .user-edit-submit-btn {
+            height: 50px;
+            width: 200px;
+            color: #fff;
+            font-size: 20px;
+            outline: none;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+          }
+          .user-edit-submit-btn:active {
+            height: 50px;
+            width: 200px;
+            color: #fff;
+            font-size: 20px;
+            outline: none;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
