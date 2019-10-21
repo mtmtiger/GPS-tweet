@@ -1,0 +1,55 @@
+.user-edit
+  = render 'shared/header'
+  = image_tag('top-bg.jpg', class: "user-edit-image")
+  .user-edit__box
+    = form_with model: @user, local: true, class: "user-edit__box__form" do |f|
+      .user-edit__box__form__table
+        .user-edit__box__form__table__title
+          ユーザー情報の編集
+        .user-edit__box__form__table__name
+          .user-edit__box__form__table__name__header
+            お名前
+          .user-edit__box__form__table__name__input
+            = f.text_field :name, autofocus: true, autocomplete: "name", maxlength: "8", placeholder: "8文字以内"
+        .user-edit__box__form__table__image
+          .user-edit__box__form__table__image__header
+            画像
+          .user-edit__box__form__table__image__input
+            =f.label :image, id: "user-image" do
+              .icon-new-images
+                クリックすると画像が選べ、選び直すと切り替わります
+            =f.file_field :image, class: 'file_image', accept: "image/jpeg, image/png"
+        .user-edit__box__form__table__preview
+          .user-edit__box__form__table__preview__header
+            プレビュー
+          .user-edit__box__form__table__preview__input#preview_box
+            #preview_list
+        .user-edit__box__form__table__sex
+          .user-edit__box__form__table__sex__header
+            性別
+          .user-edit__box__form__table__sex__input
+            = f.label :sex, :"男性"
+            = f.radio_button :sex, :"男性"
+            = f.label :sex, :"女性"
+            = f.radio_button :sex, :"女性"
+            = f.label :sex, :"その他"
+            = f.radio_button :sex, :"その他"
+        .user-edit__box__form__table__list
+          .user-edit__box__form__table__list__age
+            .user-edit__box__form__table__list__age__header
+              年齢
+            .user-edit__box__form__table__list__age__input
+              = f.select :age, options_for_select(User.ages.keys), {}, class: "select-default"
+          .user-edit__box__form__table__list__prefecture
+            .user-edit__box__form__table__list__prefecture__header
+              都道府県
+            .user-edit__box__form__table__list__prefecture__input
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "select-default"
+        .user-edit__box__form__table__profile
+          .user-edit__box__form__table__profile__header
+            自己紹介
+          .user-edit__box__form__table__profile__input
+            = f.text_area :profile, placeholder: "自己紹介文"
+        .user-edit__box__form__table__submit
+          = f.button "クリア", type: "reset", class: "user-edit-reset-btn"
+          = f.button "登録する", type: "submit", class: "user-edit-submit-btn"
