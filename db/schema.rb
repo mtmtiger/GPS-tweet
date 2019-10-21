@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_10_01_063921) do
     t.integer "sex"
     t.integer "age"
     t.integer "prefecture_id"
+    t.text "profile"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

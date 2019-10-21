@@ -119,6 +119,18 @@
               transform: translate(-50%,-50%);
               z-index: 100;
             }
+            &__articles {
+              position: absolute;
+              top: 22%;
+              left: 47%;
+              color: #fff;
+            }
+            &__nices {
+              position: absolute;
+              top: 22%;
+              left: 47%;
+              color: #fff;
+            }
             &__following {
               position: absolute;
               top: 22%;
@@ -160,8 +172,8 @@
                 }
               }
             }
-            .user-show__box__right__info__tab__menu__following,
-            .user-show__box__right__info__tab__menu__followers {
+            #tab-articles-count, #tab-nices-count,
+            #tab-following-count, #tab-followers-count {
               animation: count-color 0.3s 0.1s ease-in both; 
               @keyframes count-color {
                 0% {}

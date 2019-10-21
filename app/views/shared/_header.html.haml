@@ -6,60 +6,46 @@
           %li.header__icon__box__lists__title#header-title
             = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                -# .icon-pagination-pin
                 %p
                   GPS-Tweet
-                -# .icon-pagination-pin
               %span.menu-under-bar
           %li.header__icon__box__lists__articles#header-articles
-            = link_to articles_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                -# .icon-pagination-pin
                 %p
                   Articles
-                -# .icon-pagination-pin
               %span.menu-under-bar
           %li.header__icon__box__lists__users#header-users
             = link_to users_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
               .header-menu-icon-top
-                -# .icon-pagination-pin
                 %p
                   Users
-                -# .icon-pagination-pin
-              %span.menu-under-bar
+                  %span.menu-under-bar
           - if user_signed_in?
             %li.header__icon__box__lists__post#header-post
               = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  -# .icon-pagination-pin
                   %p
                     Post
-                  -# .icon-pagination-pin
                 %span.menu-under-bar
             %li.header__icon__box__lists__logout#header-logout{data:"user"}
               = link_to user_path(current_user.id), method: "delete", class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  -# .icon-pagination-pin
                   %p
                     Log out
-                  -# .icon-pagination-pin
                 %span.menu-under-bar
           - else
             %li.header__icon__box__lists__login#header-login{data:"user"}
               = link_to new_user_session_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  -# .icon-pagination-pin
                   %p
                     Log in
-                  -# .icon-pagination-pin
                 %span.menu-under-bar
             %li.header__icon__box__lists__signup#header-signup{data:"user"}
               = link_to step1_signup_index_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
                 .header-menu-icon-top
-                  -# .icon-pagination-pin
                   %p
                     Sign up
-                  -# .icon-pagination-pin
                 %span.menu-under-bar
       %ul.header__icon__explain
       %button.header__icon__first#menu-first

@@ -119,6 +119,7 @@
         width: 200px;
         color: #fff;
         outline: none;
+        padding: 0;
         background-color: #4444ff;
         border: 2px solid #3333ff;
         border-radius: 20px;
@@ -128,6 +129,7 @@
         height: 50px;
         width: 200px;
         color: #fff;
+        padding: 0;
         background-color: #4444ff;
         border: 2px solid #3333ff;
         border-radius: 20px;
@@ -144,9 +146,43 @@
     }
     &__test-log-in {
       position: absolute;
-      top: 120%;
+      top: 130%;
       left: 50%;
       transform: translate(-50%,-50%);
+      &__submit {
+        height: 100%;
+        #test-user-log-in-btn {
+          height: 50px;
+          width: 200px;
+          color: #fff;
+          font-weight: bold;
+          padding: 0;
+          outline: none;
+          background-color: #22ee22;
+          border: 2px solid #33cc33;
+          border-radius: 20px;
+          box-shadow: 0 5px #33cc33;
+        }
+        #test-user-log-in-btn:active {
+          height: 50px;
+          width: 200px;
+          color: #fff;
+          font-weight: bold;
+          padding: 0;
+          background-color: #00ff00;
+          border: 2px solid #33cc33;
+          border-radius: 20px;
+          box-shadow: 0 5px #33cc33;
+          animation: btn-push 0.05s ease-in both;
+          @keyframes btn-push {
+            0% {}
+            100% {
+              transform: translateY(5px);
+              box-shadow: none;
+            }
+          }
+        }
+      }
     }
   }
 }
