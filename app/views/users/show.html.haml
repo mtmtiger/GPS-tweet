@@ -26,6 +26,11 @@
             都道府県：
           .user-show__box__left__user__prefecture__text
             = @user.prefecture.name
+        .user-show__box__left__user__profile
+          %p
+            自己紹介
+          .user-show__box__left__user__profile__text
+            = @user.profile
         .user-show__box__left__menu
           -if user_signed_in? && @user.id == current_user.id
             %ul
@@ -33,7 +38,6 @@
                 = link_to '編集', root_path
               %li
                 = link_to '削除', root_path
-        - @user.id != current_user.id
         .user-box__follow
           = link_to "following: #{@user.following.count}", following_user_path(@user), class: "user-box__follow__following-link"
           = link_to "followers: #{@user.followers.count}", followers_user_path(@user), class: "user-box__follow__followers-link"
@@ -73,18 +77,22 @@
           %li.user-show__box__right__info__tab__menu.active#user-articles
             .user-show__box__right__info__tab__menu__circle
             .icon-user-article#tab-icon
+            .user-show__box__right__info__tab__menu__articles#tab-articles-count
+              = @user.articles.count
           %li.user-show__box__right__info__tab__menu#nice-users
             .user-show__box__right__info__tab__menu__circle
             .icon-nice-users#tab-icon
+            .user-show__box__right__info__tab__menu__nices#tab-nices-count
+              = @user.niced_articles.count
           %li.user-show__box__right__info__tab__menu#following-users
             .user-show__box__right__info__tab__menu__circle
             .icon-following-users#tab-icon
-            .user-show__box__right__info__tab__menu__following
+            .user-show__box__right__info__tab__menu__following#tab-following-count
               = @user.following.count
           %li.user-show__box__right__info__tab__menu#followers-users
             .user-show__box__right__info__tab__menu__circle
             .icon-followers-users#tab-icon
-            .user-show__box__right__info__tab__menu__followers
+            .user-show__box__right__info__tab__menu__followers#tab-followers-count
               = @user.followers.count
       .user-show__box__right__view
         .user-show__box__right__view__list#tab-views
@@ -170,6 +178,7 @@
                             = following.prefecture.name
                         .user-show__box__right__view__list__following__exist__list__right__bottom
                           .user-show__box__right__view__list__following__exist__list__right__bottom__profile
+                            = following.profile
             - else
               .user-show__box__right__view__list__following__not-exist
                 .user-show__box__right__view__list__following__not-exist__text
@@ -198,6 +207,7 @@
                             = follower.prefecture.name
                         .user-show__box__right__view__list__followers__exist__list__right__bottom
                           .user-show__box__right__view__list__followers__exist__list__right__bottom__profile
+                            = follower.profile
             - else
               .user-show__box__right__view__list__followers__not-exist
                 .user-show__box__right__view__list__followers__not-exist__text

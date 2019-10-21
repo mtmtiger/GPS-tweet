@@ -10,8 +10,13 @@ class UsersController < ApplicationController
     @articles = @user.articles.page(params[:page]).per(5)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def update
     @user = User.find(params[:id])
+    @user.update(user_params)
     @user.update(image_params) if @user.id == current_user.id
     redirect_to user_path(@user.id)
   end
@@ -55,6 +60,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:name, :sex, :age, :prefecture_id, :profile)
+  end
 
   def image_params
     params.require(:user).permit(:image)
