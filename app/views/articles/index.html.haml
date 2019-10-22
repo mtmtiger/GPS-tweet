@@ -2,5 +2,55 @@
   = render 'shared/header'
 
   .articles-index__box
-    = render 'shared/article-all'
-  
+    - if @articles.present?
+      .articles-index__box__show
+        .articles-index__box__show__title
+          %p
+            記事一覧
+          %span
+      .articles-index__box__main
+        - @articles.each do |article|
+          .articles-index__box__main__list#article-index-list
+            = link_to article_path(article.id) do
+              .articles-index__box__main__list__image#index-list-image
+                = image_tag(article.images[0])
+              .articles-index__box__main__list__inset-border
+              .articles-index__box__main__list__date
+                .icon-calender
+                .articles-index__box__main__list__date__text
+                  = article.created_at.strftime("%Y/%m/%d(%a)")
+              .articles-index__box__main__list__nice
+                .icon-heart
+                .articles-index__box__main__list__nice__count
+                  = article.nices.count
+              .articles-index__box__main__list__title
+                = article.title.truncate(18, ommision: "...")
+              %span.articles-index__box__main__list__line
+              .articles-index__box__main__list__user-name
+                = article.user.name
+              .articles-index__box__main__list__text
+                = article.text.truncate(34, ommision: "...")
+              .articles-index__box__main__list__wrap#mouse-offset
+      .articles-index__box__paginate
+        =paginate(@articles)
+    - else
+      .articles-index__box__no-show
+        .articles-index__box__no-show__view
+          .articles-index__box__no-show__view__text
+            %p
+              記事が投稿されていません
+            %p
+              気軽に投稿してみましょう
+          - if user_signed_in?
+            .articles-index__box__no-show__view__btn
+              = link_to new_article_path, data: {"turbolinks"=>false} do
+                %button#articles-index-new-btn
+                  投稿ページへ
+          - else
+            .articles-index__box__no-show__view__btn
+              = link_to step1_signup_index_path, data: {"turbolinks"=>false} do
+                %button#articles-index-signup-btn
+                  ユーザー登録
+              = link_to new_user_session_path, data: {"turbolinks"=>false} do
+                %button#articles-index-log-in-btn
+                  ログイン

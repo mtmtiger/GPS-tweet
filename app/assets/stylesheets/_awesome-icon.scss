@@ -310,3 +310,29 @@
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
+
+.icon-user-edit::before {
+  color: #0000ff;
+  font-family: "Font Awesome 5 Free";
+  content: '\f4ff';
+  font-size: 20px;
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-user-delete::before {
+  color: #ff0000;
+  font-family: "Font Awesome 5 Free";
+  content: '\f506';
+  font-size: 20px;
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}

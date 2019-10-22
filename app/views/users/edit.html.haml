@@ -49,7 +49,7 @@
           .user-edit__box__form__table__profile__header
             自己紹介
           .user-edit__box__form__table__profile__input
-            = f.text_area :profile, placeholder: "自己紹介文"
+            = f.text_area :profile, placeholder: "自己紹介文 最大100文字", maxlength: "100"
         .user-edit__box__form__table__submit
           = f.button "クリア", type: "reset", class: "user-edit-reset-btn"
           = f.button "登録する", type: "submit", class: "user-edit-submit-btn"
