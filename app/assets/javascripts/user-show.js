@@ -3,6 +3,7 @@ $(document).on("turbolinks:load",function() {
     $("#tab-list li").removeClass("active")
     $(this).addClass("active")
     function waveAnime(leftPosition){
+      $("#tab-top").stop()
       $("#tab-top").animate({"left": leftPosition}, 400, 'swing')
     }
     if($(this).attr("id") == "user-articles") {
@@ -32,6 +33,14 @@ $(document).on("turbolinks:load",function() {
     }
   })
 
+  $(".user-box__follow__articles-link").on('click',function(e){
+    e.preventDefault()
+    $("#user-articles").trigger('click')
+  })
+  $(".user-box__follow__nices-link").on('click',function(e){
+    e.preventDefault()
+    $("#nice-users").trigger('click')
+  })
   $(".user-box__follow__following-link").on('click',function(e){
     e.preventDefault()
     $("#following-users").trigger('click')

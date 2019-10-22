@@ -1,13 +1,11 @@
 .user-show {
   height: calc(100% - 90px);
   &__box {
-    height: 100%;
     width: 100%;
     display: flex;
     &__left {
-      height: 70%;
       width: 20%;
-      background-color: burlywood;
+      background-color: #bffbff;
       margin-left: 25px;
       &__user {
         width: 100%;
@@ -15,7 +13,6 @@
           width: 80%;
           padding: 5px 0 0 0;
           margin: 0 auto;
-          background-color: aquamarine;
           img {
             height: 100%;
             width: 100%;
@@ -24,14 +21,14 @@
           }
         }
         &__name {
-          font-size: 25px;
+          font-size: 20px;
           padding: 10px 0 0 0;
           margin: 0 0 10px 0;
           text-align: center;
           border-bottom: 2px solid #ff0000;
         }
         &__sex {
-          font-size: 20px;
+          font-size: 16px;
           display: flex;
           p {
             width: 50%;
@@ -43,7 +40,7 @@
           }
         }
         &__age {
-          font-size: 20px;
+          font-size: 16px;
           display: flex;
           p {
             width: 50%;
@@ -55,7 +52,7 @@
           }
         }
         &__prefecture {
-          font-size: 20px;
+          font-size: 16px;
           display: flex;
           p {
             width: 50%;
@@ -64,6 +61,129 @@
           &__text {
             width: 50%;
             text-align: center;
+          }
+        }
+        &__menu ul {
+          display: flex;
+          justify-content: space-around;
+          margin: 10px 0;
+          #user-edit {
+            color: #0000ff;
+            line-height: 20px;
+            display: flex;
+          }
+          #user-delete {
+            color: #ff0000;
+            line-height: 20px;
+            display: flex;
+          }
+        }
+        &__articles {
+          display: flex;
+          justify-content: space-around;
+          border-top: 2px solid #ff0000;
+          padding: 10px 0;
+          p {
+            color: #ff00ff;
+          }
+          .icon-user-article {
+            text-align: center;
+          }
+          .icon-nice-users {
+            text-align: center;
+          }
+          ::before {
+            text-align: center;
+            color: #ff00ff;
+          }
+        }
+        &__follow {
+          display: flex;
+          justify-content: space-around;
+          padding-bottom: 10px;
+          p {
+            color: #ff00ff;
+          }
+          .icon-following-users {
+            text-align: center;
+          }
+          .icon-followers-users {
+            text-align: center;
+          }
+          ::before {
+            color: #ff00ff;
+          }
+        }
+        .new_relationship {
+          height: 40px;
+          width: 100%;
+          text-align: center;
+          .btn-primary {
+            height: 50px;
+            width: 70%;
+            color: #fff;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+          }
+          .btn-primary:active {
+            height: 50px;
+            width: 70%;
+            color: #fff;
+            padding: 0;
+            cursor: pointer;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
+          }
+        }
+        .edit_relationship {
+          height: 40px;
+          width: 100%;
+          text-align: center;
+          .unfollow {
+            height: 50px;
+            width: 70%;
+            color: #fff;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+            background-color: #ff4444;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+          }
+          .unfollow:active {
+            height: 50px;
+            width: 70%;
+            color: #fff;
+            padding: 0;
+            cursor: pointer;
+            background-color: #ff4444;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
           }
         }
       }
@@ -265,13 +385,13 @@
                 width: 5%;
                 background-color: #ff0000;
                 position: absolute;
-                top: 50%;
+                top: 55%;
                 left: 50%;
                 transform: translate(-50%,-50%);
               }
               &__user-name {
                 position: absolute;
-                top: 60%;
+                top: 65%;
                 left: 50%;
                 transform: translate(-50%,-50%);
                 color: #fff;
@@ -300,14 +420,14 @@
               .user-show__box__right__view__list__articles__show__title {
                 animation: title-up 0.3s ease-in both;
                 @keyframes title-up {
-                  100% {top: 20%;}
+                  100% {top: 35%;}
                 }
               }
               .user-show__box__right__view__list__articles__show__line {
                 animation: line-up 0.3s ease-in both;
                 @keyframes line-up {
                   100% {
-                    top: 30%;
+                    top: 50%;
                     width: 50%;
                   }
                 }
@@ -315,7 +435,7 @@
               .user-show__box__right__view__list__articles__show__user-name {
                 animation: user-name-up 0.3s ease-in both;
                 @keyframes user-name-up {
-                  100% {top: 40%;}
+                  100% {top: 60%;}
                 }
               }
               .user-show__box__right__view__list__articles__show__text {
@@ -473,6 +593,12 @@
                       font-size: 18px;
                       margin: 15px 20px 5px 0;
                       color: #000;
+                    }
+                  }
+                  &__bottom {
+                    margin: 2px 0;
+                    &__profile {
+                      font-size: 15px;
                     }
                   }
                 }

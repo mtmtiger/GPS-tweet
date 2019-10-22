@@ -31,43 +31,45 @@
             自己紹介
           .user-show__box__left__user__profile__text
             = @user.profile
-        .user-show__box__left__menu
+        .user-show__box__left__user__menu
           -if user_signed_in? && @user.id == current_user.id
             %ul
               %li
-                = link_to '編集', edit_user_path(@user.id)
+                = link_to edit_user_path(@user.id), id: "user-edit" do
+                  .icon-user-edit
+                  %p
+                    編集
               %li
-                = link_to '削除', root_path
-        .user-box__follow
-          = link_to "following: #{@user.following.count}", following_user_path(@user), class: "user-box__follow__following-link"
-          = link_to "followers: #{@user.followers.count}", followers_user_path(@user), class: "user-box__follow__followers-link"
+                = link_to root_path, id: "user-delete" do
+                  .icon-user-delete
+                  %p
+                    削除
+        .user-show__box__left__user__articles
+          = link_to root_path, class: "user-box__follow__articles-link" do
+            .icon-user-article
+            %p
+              = "articles: #{@user.articles.count}"
+          = link_to root_path, class: "user-box__follow__nices-link" do
+            .icon-nice-users
+            %p
+              = "nices: #{@user.niced_articles.count}"
+        .user-show__box__left__user__follow
+          = link_to following_user_path(@user), class: "user-box__follow__following-link" do
+            .icon-following-users
+            %p
+              = "following: #{@user.following.count}"
+          = link_to followers_user_path(@user), class: "user-box__follow__followers-link" do
+            .icon-followers-users
+            %p
+              = "followers: #{@user.followers.count}"
         - if user_signed_in? && current_user != @user
           - if current_user.following?(@user)
             = form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f|
-              = f.submit 'Unfollow'
+              = f.submit 'フォロー取消', class: "btn unfollow"
           - else
             = form_for(current_user.active_relationships.build) do |f|
               %div= hidden_field_tag :followed_id, @user.id
-              = f.submit "Follow", class: "btn btn-primary"
-        -# .user-show__box__niced-articles
-        -#   - @user.niced_articles.each do |article|
-        -#     .user-show__box__niced-articles__container
-        -#       .article-view__box__title
-        -#         = article.title
-        -#       .article-view__box__image
-        -#         %ul
-        -#           - article.images.each do |image|
-        -#             %li
-        -#               = image_tag(image)
-        -#       .article-view__box__text
-        -#         = article.text
-        -#       -if user_signed_in? && article.id == current_user.id
-        -#         .article-view__box__edit
-        -#           %ul
-        -#             %li
-        -#               = link_to '編集', root_path
-        -#             %li
-        -#               = link_to '削除', root_path
+              = f.submit "フォローする", class: "btn btn-primary"
     .user-show__box__right
       .user-show__box__right__info
         .user-show__box__right__info__tab-top
@@ -107,7 +109,7 @@
                     .user-show__box__right__view__list__articles__show__created-at__text
                       = article.created_at.strftime("%Y/%m/%d(%a)")
                   .user-show__box__right__view__list__articles__show__nice#article-nice-box
-                    -if article.user_id != current_user.id
+                    -if user_signed_in? && article.user_id != current_user.id
                       -if current_user.already_niced?(article)
                         = button_to article_nice_path(article), method: 'delete', class: "nice-btn active" do
                           .icon-nice-btn
