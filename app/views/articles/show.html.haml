@@ -2,29 +2,90 @@
   = render 'shared/header'
 
   .article-show__box
-    .article-show__box__title
-      = @article.title
-    .article-show__box__image
-      %ul
-        - @article.images.each do |image|
-          %li
-            = image_tag(image)
-    .article-show__box__text
-      = @article.text
-    -if @article.user_id == current_user.id
-      .article-show__box__edit
-        %ul
-          %li
-            = link_to '編集', root_path
-          %li
-            = link_to '削除', root_path
-    .article-show__box__nice
-      .article-show__box__nice__btn
-        -if @article.user_id != current_user.id
-          -if current_user.already_niced?(@article)
-            = button_to 'いいねを取り消す', article_nice_path(@article), method: 'delete'
-          -else
-            = button_to 'いいね', article_nices_path(@article)
-      .article-show__box__nice__user
-        - @article.niced_users.each do |user|
-          = user.name
+    .article-show__box__top
+      .article-show__box__top__left
+        .article-show__box__top__left__lists
+          .article-show__box__top__left__lists__title
+            = @article.title
+          .article-show__box__top__left__lists__user
+            .article-show__box__top__left__lists__user__name
+              %p
+                ユーザー名
+              = link_to user_path(@article.user.id), data: {"turbolinks"=>false} do
+                = @article.user.name
+            .article-show__box__top__left__lists__user__sex
+              %p
+                性別
+              = link_to sex_users_path(sex: @article.user.sex), data: {"turbolinks"=>false} do
+                = @article.user.sex
+            .article-show__box__top__left__lists__user__age
+              %p
+                年齢
+              = link_to age_users_path(age: @article.user.age), data: {"turbolinks"=>false} do
+                = @article.user.age
+            .article-show__box__top__left__lists__user__prefecture
+              %p
+                都道府県
+              = link_to prefecture_users_path(prefecture: @article.user.prefecture_id), data: {"turbolinks"=>false} do
+                = @article.user.prefecture.name
+          .article-show__box__top__left__lists__address
+            %p
+              住所
+            = @article.address
+          .article-show__box__top__left__lists__map
+            .article-show__box__top__left__lists__map__text
+              場所の詳細はボタンをクリック
+            .article-show__box__top__left__lists__map__btn
+              = link_to root_path do
+                %button#article-show-map
+                  地図を表示
+          .article-show__box__top__left__lists__nice
+            .article-show__box__top__left__lists__nice__btn
+              - if user_signed_in? && @article.user_id != current_user.id
+                - if current_user.already_niced?(@article)
+                  = button_to article_nice_path(@article), method: 'delete' do
+                    .icon-article-show-niced
+                    %p
+                      取消
+                - else
+                  = button_to article_nices_path(@article) do
+                    .icon-article-show-nice
+                    %p
+                      いいね
+              - else
+                %ul
+                  %li
+                    = link_to edit_article_path(@article.id), id: "article-edit" do
+                      .icon-article-edit
+                      %p
+                        編集
+                  %li
+                    = link_to article_path, id: "article-delete", method: "delete" do
+                      .icon-article-delete
+                      %p
+                        削除
+      .article-show__box__top__right
+        .article-show__box__top__right__image
+          %ul.article-show__box__top__right__image__view#slide-lists
+            - @article.images.each do |image|
+              %li.article-show__box__top__right__image__view__list#slide-list
+                = image_tag(image)
+            %ul.article-show__box__top__right__image__view__btn#image-btn-list
+              - if @article.images.count != 0 && @article.images.count != 1
+                - @article.images.each_with_index do |image, index|
+                  .article-show__box__top__right__image__view__btn__list#image-btn
+                    - if index == 0
+                      = image_tag(image, text: "#{index + 1}", class: "target")
+                    - else
+                      = image_tag(image, text: "#{index + 1}")
+          - if @article.images.count != 0 && @article.images.count != 1
+            .article-show__box__top__right__image__prev#prev-btn
+              .article-show__box__top__right__image__prev__arrow
+              .icon-left-arrow
+            .article-show__box__top__right__image__next#next-btn
+              .article-show__box__top__right__image__next__arrow
+              .icon-right-arrow
+    .article-show__box__bottom
+      .article-show__box__bottom__text
+        = @article.text
+    
