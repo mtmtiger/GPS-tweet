@@ -11,7 +11,7 @@
       .articles-index__box__main
         - @articles.each do |article|
           .articles-index__box__main__list#article-index-list
-            = link_to article_path(article.id) do
+            = link_to article_path(article.id), data: {"turbolinks"=>false} do
               .articles-index__box__main__list__image#index-list-image
                 = image_tag(article.images[0])
               .articles-index__box__main__list__inset-border

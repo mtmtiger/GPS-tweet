@@ -25,7 +25,7 @@ $(document).on("turbolinks:load",function() {
     }
   })
 
-  $(".nice-btn").on('click', function(e){
+  $(".nice-btn").on('click', function(){
     if($(this).attr("class") == "nice-btn active"){
       $(this).removeClass("active")
     } else {

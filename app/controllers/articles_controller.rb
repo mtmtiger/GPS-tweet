@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
   def index
     @articles = Article.all.order("created_at DESC").page(params[:page]).per(8)
     @user = User.find(current_user.id) if user_signed_in?
@@ -31,7 +31,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy if @article.id == current_user.id
+    @article.destroy if @article.user_id == current_user.id
+    redirect_to root_path
   end
 
 

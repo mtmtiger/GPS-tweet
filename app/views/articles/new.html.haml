@@ -31,11 +31,11 @@
             =f.label :title, "タイトル"
             %span.require
               必須
-            =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default'
+            =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default', maxlength: "30"
           .new-article__box__right__form__image
             =f.label :images, id: "article-images" do
               .icon-new-images
-                クリックすると画像が選べます
+                クリックすると画像が選べます(1〜3枚まで)
                 %span.require
                   必須
             =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"

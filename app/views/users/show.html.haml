@@ -39,11 +39,6 @@
                   .icon-user-edit
                   %p
                     編集
-              %li
-                = link_to root_path, id: "user-delete" do
-                  .icon-user-delete
-                  %p
-                    削除
         .user-show__box__left__user__articles
           = link_to root_path, class: "user-box__follow__articles-link" do
             .icon-user-article
@@ -100,17 +95,24 @@
         .user-show__box__right__view__list#tab-views
           %ul.user-show__box__right__view__list__articles#slide-lists
             - if @articles.present?
-              -@articles.each do |article|
+              - @articles.each do |article|
                 %li.user-show__box__right__view__list__articles__show#slide-list
                   = link_to article_path(article.id) do
-                    =image_tag(article.images[0])
-                  .user-show__box__right__view__list__articles__show__created-at
-                    .icon-calender
-                    .user-show__box__right__view__list__articles__show__created-at__text
-                      = article.created_at.strftime("%Y/%m/%d(%a)")
+                    = image_tag(article.images[0])
+                    .user-show__box__right__view__list__articles__show__created-at
+                      .icon-calender
+                      .user-show__box__right__view__list__articles__show__created-at__text
+                        = article.created_at.strftime("%Y/%m/%d(%a)")
+                    .user-show__box__right__view__list__articles__show__title
+                      = article.title.truncate(15, ommision: "...")
+                    %span.user-show__box__right__view__list__articles__show__line
+                    .user-show__box__right__view__list__articles__show__user-name
+                      = article.user.name
+                    .user-show__box__right__view__list__articles__show__text
+                      = article.text.truncate(75, ommision: "...")
                   .user-show__box__right__view__list__articles__show__nice#article-nice-box
-                    -if user_signed_in? && article.user_id != current_user.id
-                      -if current_user.already_niced?(article)
+                    - if user_signed_in? && article.user_id != current_user.id
+                      - if current_user.already_niced?(article)
                         = button_to article_nice_path(article), method: 'delete', class: "nice-btn active" do
                           .icon-nice-btn
                       -else
@@ -120,13 +122,6 @@
                       .icon-heart
                     .user-show__box__right__view__list__articles__show__nice__count
                       = article.nices.count
-                  .user-show__box__right__view__list__articles__show__title
-                    = article.title.truncate(15, ommision: "...")
-                  %span.user-show__box__right__view__list__articles__show__line
-                  .user-show__box__right__view__list__articles__show__user-name
-                    = article.user.name
-                  .user-show__box__right__view__list__articles__show__text
-                    = article.text.truncate(75, ommision: "...")
             - else
               .user-show__box__right__view__list__articles__no-show
                 .user-show__box__right__view__list__articles__no-show__text
@@ -134,20 +129,21 @@
             - if @articles_count.count > 5
               .user-show__box__right__view__list__articles__paginate
                 =paginate(@articles)
-              .user-show__box__right__view__list__articles__btn
-                .user-show__box__right__view__list__articles__btn__list#article-slide-btn-list
-                  - @user.articles.each_with_index do |article, index|
-                    - if index < 5
-                      .user-show__box__right__view__list__articles__btn__list__dot#user-article-slide-btn
-                        - if index == 0
-                          = link_to "#{index + 1}", "/" ,class:"target"
-                        - else
-                          = link_to "#{index + 1}", "/"
+            .user-show__box__right__view__list__articles__btn
+              .user-show__box__right__view__list__articles__btn__list#article-slide-btn-list
+                - @user.articles.each_with_index do |article, index|
+                  - if index < 5
+                    .user-show__box__right__view__list__articles__btn__list__dot#user-article-slide-btn
+                      - if index == 0
+                        = link_to "#{index + 1}", "/" ,class:"target"
+                      - else
+                        = link_to "#{index + 1}", "/"
+            - if @articles_count.count != 0 && @articles_count.count != 1
               .user-show__box__right__view__list__articles__prev#prev-btn
-                .user-show__box__right__view__list__articles__prev__cricle
+                .user-show__box__right__view__list__articles__prev__arrow
                 .icon-left-arrow
               .user-show__box__right__view__list__articles__next#next-btn
-                .user-show__box__right__view__list__articles__next__cricle
+                .user-show__box__right__view__list__articles__next__arrow
                 .icon-right-arrow
           .user-show__box__right__view__list__nices#nices-box
             - if @user.niced_articles.present?
