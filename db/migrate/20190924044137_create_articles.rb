@@ -4,8 +4,8 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string  :title,        null: false
       t.text    :text,         null: false
       t.text    :address
-      t.float :lat
-      t.float :lng
+      t.decimal :lat, precision: 9, scale: 6
+      t.decimal :lng, precision: 9, scale: 6
       t.references :user,      null: false
       t.timestamps
     end
