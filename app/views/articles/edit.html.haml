@@ -1,2 +1,63 @@
-- @article.images.each do |image|
-  = image_tag(image)
+.new-article
+  = render 'shared/header'
+
+  = form_with model: @article, local: true, id: "form_with_edit" do |f|
+    .new-article__box
+      .new-article__box__left
+        %p.new-article__box__left__header
+          登録したい地点をクリックするか検索をして
+          %span
+            ピン
+          をつけよう。
+        %p.new-article__box__left__text
+          住所や駅名、目印などで検索できます。
+        #map-search
+          %input{type: "text", value: "",placeholder: "例)東京駅", id: "search",autofocus: "ture"}
+          %button{type: "button", value: "検索", id: "map_button"}
+            .icon-search
+        #map
+        .new-article__box__left__bottom#article-map-bottom
+          %p.new-article__box__left__bottom__text
+            地図上をクリックするとピンを指定できます。
+        = f.text_field :lat, id: "lat", value: "", type: "hidden"
+        = f.text_field :lng, id: "lng", value: "", type: "hidden"
+        = f.text_field :address, id: "address", value: "", type: "hidden"
+        %script{src: "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=" + Rails.application.credentials.dig(:google, :google_api_key).to_s + "&callback=editMap", async: "", defer: "defer"} }
+
+      .new-article__box__modal#article-map-modal
+        .new-article__box__modal__inner#modal-gray
+        .new-article__box__modal__right
+          .new-article__box__modal__right__form
+            %p.new-article__box__modal__right__form__header
+              新規投稿
+            .new-article__box__modal__right__form__title
+              =f.label :title, "タイトル"
+              %span.require
+                必須
+              =f.text_field :title, placeholder: '記事のタイトルを入力してください', class: 'form-default', maxlength: "30"
+            .new-article__box__modal__right__form__image
+              =f.label :images, id: "article-images" do
+                .icon-new-images
+                  クリックすると画像が選べます(1〜3枚まで)
+                  %span.require
+                    必須
+              =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"
+            %p#image-preview
+              ※画像を添付した場合プレビューが表示されます
+            .new-article__box__modal__right__form__preview#preview_box
+              %ul#preview_list
+                - i = 0
+                - @article.images[0..2].each do |image|
+                  %li.upload-article{id: i}
+                    - i += 1
+                    %figure.upload-article-figure
+                      = image_tag(image)
+                    .upload-article-btn
+                      %a.upload-article-delete="削除"
+            .new-article__box__modal__right__form__text
+              =f.label :text, "テキスト"
+              %span.require
+                必須
+              =f.text_area :text, placeholder: '記事の内容を入力してください', rows: "4"
+            .new-article__box__modal__right__form__submit
+              =f.submit '投稿する', id: "article-submit"
