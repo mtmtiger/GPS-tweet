@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
   resources :articles do
     resources :nices, only: [:create, :destroy]
+    member do
+      get :map
+    end
   end
   resources :users do
     member do

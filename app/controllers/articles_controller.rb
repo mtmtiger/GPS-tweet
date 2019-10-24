@@ -35,6 +35,12 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def map
+    @article = Article.find(params[:id])
+    gon.lat = @article.lat.to_f
+    gon.lng = @article.lng.to_f
+  end
+
 
   private
 

@@ -36,7 +36,7 @@
             .article-show__box__top__left__lists__map__text
               場所の詳細はボタンをクリック
             .article-show__box__top__left__lists__map__btn
-              = link_to root_path do
+              = link_to map_article_path(@article), data: {"turbolinks"=>false} do
                 %button#article-show-map
                   地図を表示
           .article-show__box__top__left__lists__nice

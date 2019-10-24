@@ -539,6 +539,55 @@
             width: 100%;
             position: relative;
             display: none;
+            &__exist {
+              height: 100%;
+              width: 100%;
+              box-sizing: border-box;
+              border: 2px solid #000;
+              border-top: none;
+              overflow-y: scroll;
+              position: relative;
+              &__list {
+                height: 25%;
+                display: flex;
+                border-bottom: 2px solid #ddd;
+                &__left {
+                  width: 20%;
+                  position: relative;
+                  img {
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                  }
+                }
+                &__right{
+                  width: 80%;
+                  &__top {
+                    height: 34%;
+                    margin-right: 10px;
+                    display: flex;
+                    border-bottom: 2px solid #ff0000;
+                    &__title {
+                      font-size: 18px;
+                      margin: 15px 20px 5px 0;
+                      color: #000;
+                      display: flex;
+                    }
+                  }
+                  &__bottom {
+                    margin: 2px 0;
+                    &__text {
+                      font-size: 15px;
+                      color: #000;
+                    }
+                  }
+                }
+              }
+            }
             &__not-exist {
               height: 100%;
               width: 100%;
@@ -605,6 +654,7 @@
                     margin: 2px 0;
                     &__profile {
                       font-size: 15px;
+                      color: #000;
                     }
                   }
                 }
@@ -669,6 +719,13 @@
                     li {
                       font-size: 18px;
                       margin: 15px 20px 5px 0;
+                      color: #000;
+                    }
+                  }
+                  &__bottom {
+                    margin: 2px 0;
+                    &__profile {
+                      font-size: 15px;
                       color: #000;
                     }
                   }
