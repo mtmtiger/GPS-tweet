@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :map]
   def index
     @articles = Article.all.order("created_at DESC").page(params[:page]).per(8)
     @user = User.find(current_user.id) if user_signed_in?
@@ -23,10 +23,29 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    gon.article = @article
+    gon.lat = @article.lat.to_f
+    gon.lng = @article.lng.to_f
+    img_array = []
+    @article.images.each do |image|
+      img_array.push(image)
+    end
+    gon.img_array = img_array
   end
 
   def update
     @article = Article.find(params[:id])
+    if num_params[:num] != nil
+      num_params[:num].each do |n|
+        n = n.to_i
+        @article.images[n].purge
+      end
+    end
+    if image_params[:images] != nil
+      @article.update(image_params)
+    end
+    @article.update(article_params)
+    redirect_to article_path
   end
 
   def destroy

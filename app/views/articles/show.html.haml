@@ -52,10 +52,10 @@
                     .icon-article-show-nice
                     %p
                       いいね
-              - else
+              - elsif user_signed_in? && @article.user_id == current_user.id
                 %ul
                   %li
-                    = link_to edit_article_path(@article.id), id: "article-edit" do
+                    = link_to edit_article_path(@article.id), id: "article-edit", data: {"turbolinks"=>false} do
                       .icon-article-edit
                       %p
                         編集

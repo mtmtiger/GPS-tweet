@@ -131,7 +131,7 @@
                 =paginate(@articles)
             .user-show__box__right__view__list__articles__btn
               .user-show__box__right__view__list__articles__btn__list#article-slide-btn-list
-                - @user.articles.each_with_index do |article, index|
+                - @articles.each_with_index do |article, index|
                   - if index < 5
                     .user-show__box__right__view__list__articles__btn__list__dot#user-article-slide-btn
                       - if index == 0
@@ -191,7 +191,8 @@
                             = following.prefecture.name
                         .user-show__box__right__view__list__following__exist__list__right__bottom
                           .user-show__box__right__view__list__following__exist__list__right__bottom__profile
-                            = following.profile.truncate(100, ommision: "...")
+                            - if following.profile.present?
+                              = following.profile.truncate(100, ommision: "...")
             - else
               .user-show__box__right__view__list__following__not-exist
                 .user-show__box__right__view__list__following__not-exist__text

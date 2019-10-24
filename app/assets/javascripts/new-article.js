@@ -41,6 +41,7 @@ $(document).on("turbolinks:load",function() {
       }
     }) 
 
+    num_array = []
     $(document).on('click','#preview_box .upload-article-delete', function(e){
       e.preventDefault();
       var index = $("#preview_box .upload-article-delete").index(this);
@@ -151,6 +152,14 @@ $(document).on("turbolinks:load",function() {
       reader.readAsDataURL(files[i]);
       } 
     }
-  }) 
+  })
+
+  $(document).on('click', "#map-decision", function(){
+    $("#article-map-modal").fadeIn()
+  })
+
+  $(document).on('click', "#modal-gray", function(){
+    $("#article-map-modal").fadeOut()
+  })
 })
 
