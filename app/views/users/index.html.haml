@@ -8,7 +8,7 @@
     %ul.user-index__box__users#users-list
       -@users.each do |user|
         %li.user-index__box__users__list
-          = link_to user_path(user.id), class: "user-index__box__users__list__main", data: {"turbolinks"=>false} do
+          = link_to user_path(user.id), class: "user-index__box__users__list__main", data: {turbolinks: false} do
             .user-index__box__users__list__image
               - if user.image.attached?
                 = image_tag(user.image, class: "user-image")
@@ -17,13 +17,13 @@
             .user-index__box__users__list__name
               = user.name
           .user-index__box__users__list__sub
-            = link_to sex_users_path(sex: user.sex), class: "user-index__box__users__list__sub__sex", data: {"turbolinks"=>false} do
+            = link_to sex_users_path(sex: user.sex), class: "user-index__box__users__list__sub__sex", data: {turbolinks: false} do
               .user-index__box__users__list__sub__sex__text
                 = user.sex
-            = link_to age_users_path(age: user.age), class: "user-index__box__users__list__sub__age", data: {"turbolinks"=>false} do
+            = link_to age_users_path(age: user.age), class: "user-index__box__users__list__sub__age", data: {turbolinks: false} do
               .user-index__box__users__list__sub__age__text
                 = user.age
-            = link_to prefecture_users_path(prefecture: user.prefecture_id), class: "user-index__box__users__list__sub__prefecture", data: {"turbolinks"=>false} do
+            = link_to prefecture_users_path(prefecture: user.prefecture_id), class: "user-index__box__users__list__sub__prefecture", data: {turbolinks: false} do
               .user-index__box__users__list__sub__prefecture__text
                 = user.prefecture.name
     .user-index__box__paginate

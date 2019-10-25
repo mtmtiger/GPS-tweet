@@ -1,34 +1,23 @@
-if(document.URL.match("articles/new")){
+
   var map;
+  var marker;
   let btnHTML = `<button class="new-article__box__left__bottom__btn" id="map-decision" type="button">
-                  座標を決定
-                 </button>`
-
+  座標を決定
+  </button>`
+  
   function initMap() {
-    // Geolocation APIに対応している
-    if (navigator.geolocation) {
-      // 現在地を取得
-      navigator.geolocation.getCurrentPosition(
-        // 取得成功した場合
-        function(position) {
-          // 緯度・経度を変数に格納
-          var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          // マップオプションを変数に格納
-          var mapOptions = {
-            zoom : 15,          // 拡大倍率
-            center : mapLatLng  // 緯度・経度
-          };
-          // マップオブジェクト作成
-          var map = new google.maps.Map(
-            document.getElementById("map"), // マップを表示する要素
-            mapOptions         // マップオプション
-          );
-          // マップにマーカーを表示する
-          var marker = new google.maps.Marker({
-            // map : map,             // 対象の地図オブジェクト
-            // position : mapLatLng   // 緯度・経度
-          });
-
+    var center = {
+      lat: 35.681236,
+      lng: 139.764936
+    }
+    map = new google.maps.Map(document.getElementById('map'), { // #sampleに地図を埋め込む
+      center: center, // 地図の中心を指定
+      zoom: 6 // 地図のズームを指定
+    });
+    marker = new google.maps.Marker({ // マーカーの追加
+      // position: center, // マーカーを立てる位置を指定
+      // map: map // マーカーを立てる地図を指定
+    });
           map.addListener('click', function(e) {
             getClickLatLng(e.latLng, map);
 
@@ -73,30 +62,7 @@ if(document.URL.match("articles/new")){
             // 座標の中心をずらす
             map.panTo(lat_lng);
           }
-        },
-        // 取得失敗した場合
-        function(error) {
-          // エラーメッセージを表示
-          switch(error.code) {
-            case 1: // PERMISSION_DENIED
-              alert("位置情報の利用が許可されていません");
-              break;
-            case 2: // POSITION_UNAVAILABLE
-              alert("現在位置が取得できませんでした");
-              break;
-            case 3: // TIMEOUT
-              alert("タイムアウトになりました");
-              break;
-            default:
-              alert("その他のエラー(エラーコード:"+error.code+")");
-              break;
-          }
-        }
-      );
-    // Geolocation APIに対応していない
-    } else {
-      alert("この端末では位置情報が取得できません");
-    }
+
     var getMap = (function(){
       function codeAddress(address) {
         // google.maps.Geocoder()コンストラクタのインスタンスを生成
@@ -192,4 +158,3 @@ if(document.URL.match("articles/new")){
     })();
     getMap.getAddress();
   }
-}

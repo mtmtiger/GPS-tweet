@@ -4,45 +4,45 @@
       .header__icon__box
         %ul.header__icon__box__lists#menu-lists
           %li.header__icon__box__lists__title#header-title
-            = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to root_path, class: "header-menu-icon", data: {turbolinks: false} do
               .header-menu-icon-top
                 %p
                   GPS-Tweet
               %span.menu-under-bar
           %li.header__icon__box__lists__articles#header-articles
-            = link_to articles_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to articles_path, class: "header-menu-icon", data: {turbolinks: false} do
               .header-menu-icon-top
                 %p
                   Articles
               %span.menu-under-bar
           %li.header__icon__box__lists__users#header-users
-            = link_to users_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to users_path, class: "header-menu-icon", data: {turbolinks: false} do
               .header-menu-icon-top
                 %p
                   Users
                   %span.menu-under-bar
           - if user_signed_in?
             %li.header__icon__box__lists__post#header-post
-              = link_to new_article_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              = link_to new_article_path, class: "header-menu-icon", data: {turbolinks: false} do
                 .header-menu-icon-top
                   %p
                     Post
                 %span.menu-under-bar
             %li.header__icon__box__lists__logout#header-logout{data:"user"}
-              = link_to user_path(current_user.id), method: "delete", class: "header-menu-icon", data: {"turbolinks"=>false} do
+              = link_to user_path(current_user.id), method: "delete", class: "header-menu-icon", data: {turbolinks: false} do
                 .header-menu-icon-top
                   %p
                     Log out
                 %span.menu-under-bar
           - else
             %li.header__icon__box__lists__login#header-login{data:"user"}
-              = link_to new_user_session_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              = link_to new_user_session_path, class: "header-menu-icon", data: {turbolinks: false} do
                 .header-menu-icon-top
                   %p
                     Log in
                 %span.menu-under-bar
             %li.header__icon__box__lists__signup#header-signup{data:"user"}
-              = link_to step1_signup_index_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+              = link_to step1_signup_index_path, class: "header-menu-icon", data: {turbolinks: false} do
                 .header-menu-icon-top
                   %p
                     Sign up
@@ -55,16 +55,16 @@
       %ul.header__icon__top__lists
         - if user_signed_in?
           %li.header__icon__top__lists__current
-            = link_to mains_path , method: "get", class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to mains_path , method: "get", class: "header-menu-icon", data: {turbolinks: false} do
               %p
                 = "ようこそ #{current_user.name} さん"
         -else
           %li.header__icon__top__lists__how
-            = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+            = link_to root_path, class: "header-menu-icon", data: {turbolinks: false} do
               %p
                 はじめに
         %li.header__first__lists__top
-          = link_to root_path, class: "header-menu-icon", data: {"turbolinks"=>false} do
+          = link_to root_path, class: "header-menu-icon", data: {turbolinks: false} do
             %p
               GPS-Tweet
     .header__explain#header-explain
