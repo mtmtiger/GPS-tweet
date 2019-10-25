@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :map]
+  before_action :move_to_index, except: [:index, :show, :map, :search]
   def index
     @articles = Article.all.order("created_at DESC").page(params[:page]).per(8)
     @user = User.find(current_user.id) if user_signed_in?
@@ -58,6 +58,17 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     gon.lat = @article.lat.to_f
     gon.lng = @article.lng.to_f
+  end
+
+  def search
+    if params[:keyword] != ""
+      @search_articles = Article.all.where('title LIKE ?', "%#{params[:keyword]}%").order("created_at DESC").limit(8)
+    else
+      @search_articles = @articles = Article.all.order("created_at DESC").page(request.referer[-1].to_i).per(8)
+    end
+    respond_to do |format|
+      format.json
+    end
   end
 
 
