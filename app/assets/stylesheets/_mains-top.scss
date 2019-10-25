@@ -1,0 +1,124 @@
+.mains-top {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  &__box {
+    height: 100%;
+    width: 100%;
+    font-family: 'Black Ops One', cursive;
+    overflow: hidden;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: grayscale(100%);
+    }
+    &__left-bg {
+      height: 0;
+      width: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 100vh solid #fff;
+      border-right: 50vw solid transparent;
+    }
+    &__title {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      z-index: 100;
+      p {
+        color: #000;
+        font-style: italic;
+        font-size: 100px;
+      }
+    }
+    &__right-bg {
+      height: 0;
+      width: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-bottom: 100vh solid #fff;
+      border-left: 50vw solid transparent;
+      border-right: 10vw solid #fff;
+    }
+    &__menu {
+      position: absolute;
+      top: 60%;
+      right: 12%;
+      transform: skewX(-15deg);
+      &__link {
+        &__list {
+          padding: 10px 0 0 0;
+          display: flex;
+          p {
+            font-size: 40px;
+            color: #000;
+          }
+          &__span {
+            height: 15px;
+            width: 20px;
+            opacity: 0;
+            position: relative;
+            &__red {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 150%;
+              left: -10%;
+              transform: translate(-50%,-50%);
+              border-right: 3px solid #0000ff;
+              border-left: 3px solid #ff0000;
+              border-radius: 50%;
+            }
+            &__blue {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 150%;
+              left: -10%;
+              transform: translate(-50%,-50%);
+              border-top: 3px solid #0000ff;
+              border-bottom: 3px solid #ff0000;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+      &__link:hover {
+        p {
+          color: #ff0000;
+        }
+        .mains-top__box__menu__link__list__span {
+          animation: circle-view 0.5s linear both;
+          @keyframes circle-view {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          .mains-top__box__menu__link__list__span__red {
+            animation: red-circle 2s linear infinite;
+            @keyframes red-circle {
+              0% {transform: translate(-50%,-50%) rotateX(40deg) rotateY(40deg) rotateZ(0);}
+              100% {transform: translate(-50%,-50%) rotateX(40deg) rotateY(40deg) rotateZ(360deg);}
+            }
+          }
+          .mains-top__box__menu__link__list__span__blue {
+            animation: blue-circle 2s linear infinite;
+            @keyframes blue-circle {
+              0% {transform: translate(-50%,-50%) rotateX(40deg) rotateY(-40deg) rotateZ(0);}
+              100% {transform: translate(-50%,-50%) rotateX(40deg) rotateY(-40deg) rotateZ(360deg);}
+            }
+          }
+        }
+      }
+    }
+  }
+}
