@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   get 'relationships/create'
   get 'relationships/destroy'
   devise_for :users
-  root 'articles#index'
-  resources :mains
+  root 'mains#top'
+  resources :mains do
+    collection do
+      get :top
+    end
+  end
   resources :signup do
     collection do
       get 'step1'

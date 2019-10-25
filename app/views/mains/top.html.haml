@@ -1,0 +1,57 @@
+.mains-top
+
+  .mains-top__box
+    = image_tag('mains-top-bg.jpg')
+    .mains-top__box__left-bg
+    = link_to mains_path, data: {"turbolinks"=>false} do
+      .mains-top__box__title
+        %p
+          GPS-Tweet
+    .mains-top__box__right-bg
+    %ul.mains-top__box__menu
+      = link_to articles_path, class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+        %li.mains-top__box__menu__link__list
+          .mains-top__box__menu__link__list__span
+            %span.mains-top__box__menu__link__list__span__red
+            %span.mains-top__box__menu__link__list__span__blue
+          %p
+            Articles
+      = link_to users_path, class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+        %li.mains-top__box__menu__link__list
+          .mains-top__box__menu__link__list__span
+            %span.mains-top__box__menu__link__list__span__red
+            %span.mains-top__box__menu__link__list__span__blue
+          %p
+            Users
+      - if user_signed_in?
+        = link_to new_article_path, class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+          %li.mains-top__box__menu__link__list
+            .mains-top__box__menu__link__list__span
+              %span.mains-top__box__menu__link__list__span__red
+              %span.mains-top__box__menu__link__list__span__blue
+            %p
+              Post
+        = link_to user_path(current_user.id), method: "delete", class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+          %li.mains-top__box__menu__link__list
+            .mains-top__box__menu__link__list__span
+              %span.mains-top__box__menu__link__list__span__red
+              %span.mains-top__box__menu__link__list__span__blue
+            %p
+              Log out
+      - else
+        = link_to new_user_session_path, class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+          %li.mains-top__box__menu__link__list
+            .mains-top__box__menu__link__list__span
+              %span.mains-top__box__menu__link__list__span__red#circle-red
+              %span.mains-top__box__menu__link__list__span__blue#circle-blue
+            %p
+              Log in
+        = link_to step1_signup_index_path, class: "mains-top__box__menu__link", data: {"turbolinks"=>false} do
+          %li.mains-top__box__menu__link__list
+            .mains-top__box__menu__link__list__span
+              %span.mains-top__box__menu__link__list__span__red#circle-red
+              %span.mains-top__box__menu__link__list__span__blue#circle-blue
+            %p
+              Sign up
+
+
