@@ -104,7 +104,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.icon-search::before {
+.icon-map-search::before {
   color: #000;
   font-family: "Font Awesome 5 Free";
   content: '\f689';
@@ -384,6 +384,19 @@
   font-size: 20px;
   font-weight: 900;
   z-index: 100;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-search::before {
+  color: #000;
+  font-family: "Font Awesome 5 Free";
+  content: '\f002';
+  font-size: 26px;
+  font-weight: 900;
   display: inline-block;
   font-style: normal;
   font-variant: normal;

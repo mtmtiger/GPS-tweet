@@ -5,32 +5,38 @@
     - if @articles.present?
       .articles-index__box__show
         .articles-index__box__show__title
-          %p
-            記事一覧
+          .articles-index__box__show__title__list
+            %p#articles-index-title
+              記事一覧
+            .articles-index__box__show__title__list__search
+              %input#articles-input-search
+              .search-btn
+                .icon-search#articles-index-search
           %span
       .articles-index__box__main
         - @articles.each do |article|
-          .articles-index__box__main__list#article-index-list
-            = link_to article_path(article.id), data: {"turbolinks"=>false} do
-              .articles-index__box__main__list__image#index-list-image
-                = image_tag(article.images[0])
-              .articles-index__box__main__list__inset-border
-              .articles-index__box__main__list__date
-                .icon-calender
-                .articles-index__box__main__list__date__text
-                  = article.created_at.strftime("%Y/%m/%d(%a)")
-              .articles-index__box__main__list__nice
-                .icon-heart
-                .articles-index__box__main__list__nice__count
-                  = article.nices.count
-              .articles-index__box__main__list__title
-                = article.title.truncate(18, ommision: "...")
-              %span.articles-index__box__main__list__line
-              .articles-index__box__main__list__user-name
-                = article.user.name
-              .articles-index__box__main__list__text
-                = article.text.truncate(34, ommision: "...")
-              .articles-index__box__main__list__wrap#mouse-offset
+          .articles-index__box__main__container
+            .articles-index__box__main__container__list#article-index-list
+              = link_to article_path(article.id), data: {"turbolinks"=>false} do
+                .articles-index__box__main__container__list__image#index-list-image
+                  = image_tag(article.images[0])
+                .articles-index__box__main__container__list__inset-border
+                .articles-index__box__main__container__list__date
+                  .icon-calender
+                  .articles-index__box__main__container__list__date__text
+                    = article.created_at.strftime("%Y/%m/%d(%a)")
+                .articles-index__box__main__container__list__nice
+                  .icon-heart
+                  .articles-index__box__main__container__list__nice__count
+                    = article.nices.count
+                .articles-index__box__main__container__list__title
+                  = article.title.truncate(18, ommision: "...")
+                %span.articles-index__box__main__container__list__line
+                .articles-index__box__main__container__list__user-name
+                  = article.user.name
+                .articles-index__box__main__container__list__text
+                  = article.text.truncate(34, ommision: "...")
+                .articles-index__box__main__container__list__wrap#mouse-offset
       .articles-index__box__paginate
         =paginate(@articles)
     - else

@@ -10,11 +10,44 @@
       height: 60px;
       width: 100%;
       &__title {
-        height: 100%;
+        height: 50%;
         width: 100%;
-        font-size: 30px;
-        text-align: center;
-        line-height: 30px;
+        &__list {
+          height: 100%;
+          width: 100%;
+          font-size: 30px;
+          position: relative;
+          line-height: 30px;
+          p {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
+          &__search {
+            height: 100%;
+            position: relative;
+            #articles-input-search {
+              height: 35px;
+              width: 0;
+              font-size: 22px;
+              border-radius: 20px;
+              outline: none;
+              padding: 0 30px 0 10px;
+              position: absolute;
+              top: 50%;
+              right: 10%;
+              transform: translateY(-50%);
+            }
+            .search-btn {
+              position: absolute;
+              top: 50%;
+              right: 11%;
+              transform: translateY(-50%);
+            }
+          }
+        }
         span {
           display: block;
           height: 3px;
@@ -30,158 +63,163 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      &__list {
+      &__container {
         height: 40%;
         width: 22%;
-        border-radius: 10px;
-        box-sizing: border-box;
-        box-shadow: 0 30px 30px -10px #888;
-        position: relative;
-        perspective: 1000;
-        &__image {
+        perspective: 400px;
+        &__list {
           height: 100%;
           width: 100%;
           border-radius: 10px;
-          overflow: hidden;
+          box-sizing: border-box;
+          box-shadow: 0 30px 30px -10px #888;
           position: relative;
-          img {
-            height: 120%;
-            width: 120%;
+          perspective: 1000;
+          &__image {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            img {
+              height: 120%;
+              width: 120%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+              filter: brightness(60%);
+            }
+          }
+          &__inset-border {
+            height: 95%;
+            width: 95%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            filter: brightness(60%);
+            border: 1px solid #aaa;
+            border-radius: 10px;
           }
-        }
-        &__inset-border {
-          height: 95%;
-          width: 95%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          border: 1px solid #aaa;
-          border-radius: 10px;
-        }
-        &__date {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          color: #fff;
-          display: flex;
-          &__text {
-            font-size: 12px;
-            margin: auto;
-            margin-left: 5px;
-          }
-        }
-        &__nice {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          &__count {
+          &__date {
+            position: absolute;
+            top: 10px;
+            left: 10px;
             color: #fff;
-            font-size: 12px;
+            display: flex;
+            &__text {
+              font-size: 12px;
+              margin: auto;
+              margin-left: 5px;
+            }
+          }
+          &__nice {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            &__count {
+              color: #fff;
+              font-size: 12px;
+              font-weight: bold;
+              text-align: center;
+            }
+            .icon-heart {
+              text-align: center;
+            }
+          }
+          &__title {
+            width: 90%;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            font-size: 20px;
             font-weight: bold;
             text-align: center;
+            word-break: break-all;
           }
-          .icon-heart {
-            text-align: center;
+          &__line {
+            height: 3px;
+            width: 5%;
+            background-color: #ff0000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
           }
-        }
-        &__title {
-          width: 90%;
-          position: absolute;
-          top: 40%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          color: #fff;
-          font-size: 20px;
-          font-weight: bold;
-          text-align: center;
-          word-break: break-all;
-        }
-        &__line {
-          height: 3px;
-          width: 5%;
-          background-color: #ff0000;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-        }
-        &__user-name {
-          position: absolute;
-          top: 60%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          color: #fff;
-          font-size: 12px;
-        }
-        &__text {
-          width: 90%;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translate(-50%,0);
-          color: #fff;
-          font-size: 16px;
-          word-break: break-all;
-          opacity: 0;
-        }
-        &__wrap {
-          height: 100%;
-          width: 100%;
-          opacity: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 100;
-        }
-      }
-      &__list:hover {
-        animation: articles-list-border 0.2s ease-in both;
-        @keyframes articles-list-border {
-          100% {border: 1px solid #000;}
-        }
-        .articles-index__box__main__list__inset-border {
-          animation: border-change 0.3s ease-in both;
-          @keyframes border-change{
-            100% {border: 1px solid #ccc;}
+          &__user-name {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            font-size: 12px;
+          }
+          &__text {
+            width: 90%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%,0);
+            color: #fff;
+            font-size: 16px;
+            word-break: break-all;
+            opacity: 0;
+          }
+          &__wrap {
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
           }
         }
-        .articles-index__box__main__list__title {
-          animation: articles-index-title 0.3s ease-in both;
-          @keyframes articles-index-title {
-            100% {top: 30%;}
+        &__list:hover {
+          animation: articles-list-border 0.2s ease-in both;
+          @keyframes articles-list-border {
+            100% {border: 1px solid #000;}
           }
-        }
-        .articles-index__box__main__list__line {
-          animation: articles-index-border 0.3s ease-in both;
-          @keyframes articles-index-border {
-            100% {
-              top: 40%;
-              width: 50%;
+          .articles-index__box__main__container__list__inset-border {
+            animation: border-change 0.3s ease-in both;
+            @keyframes border-change{
+              100% {border: 1px solid #ccc;}
             }
           }
-        }
-        .articles-index__box__main__list__user-name {
-          animation: articles-index-user-name 0.3s ease-in both;
-          @keyframes articles-index-user-name {
-            100% {top: 50%;}
-          }
-        }
-        .articles-index__box__main__list__text {
-          animation: articles-index-text 0.3s ease-in both;
-          @keyframes articles-index-text {
-            0% {
-              height: 0;
+          .articles-index__box__main__container__list__title {
+            animation: articles-index-title 0.3s ease-in both;
+            @keyframes articles-index-title {
+              100% {top: 30%;}
             }
-            100% {
-              height: 20%;
-              bottom: 10%;
-              opacity: 1;
+          }
+          .articles-index__box__main__container__list__line {
+            animation: articles-index-border 0.3s ease-in both;
+            @keyframes articles-index-border {
+              100% {
+                top: 40%;
+                width: 50%;
+              }
+            }
+          }
+          .articles-index__box__main__container__list__user-name {
+            animation: articles-index-user-name 0.3s ease-in both;
+            @keyframes articles-index-user-name {
+              100% {top: 50%;}
+            }
+          }
+          .articles-index__box__main__container__list__text {
+            animation: articles-index-text 0.3s ease-in both;
+            @keyframes articles-index-text {
+              0% {
+                height: 0;
+              }
+              100% {
+                height: 20%;
+                bottom: 10%;
+                opacity: 1;
+              }
             }
           }
         }
