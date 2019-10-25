@@ -5,7 +5,6 @@ if(document.URL.match("articles") && document.URL.match("edit")){
     lat: gon.lat,
     lng: gon.lng
   }
-  console.log(gon.lat)
   
   let btnHTML = `<button class="new-article__box__left__bottom__btn" id="map-decision" type="button">
                   座標を決定

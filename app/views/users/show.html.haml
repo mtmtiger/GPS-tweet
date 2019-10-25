@@ -149,7 +149,7 @@
             - if @user.niced_articles.present?
               .user-show__box__right__view__list__nices__exist
                 - @user.niced_articles.each do |niced_article|
-                  = link_to article_path(niced_article.id), data: {"turbolinks"=>false} do
+                  = link_to article_path(niced_article.id), data: {turbolinks: false} do
                     %li.user-show__box__right__view__list__nices__exist__list
                       .user-show__box__right__view__list__nices__exist__list__left
                         .user-show__box__right__view__list__nices__exist__list__left__image
@@ -171,7 +171,7 @@
             - if @user.following.present?
               %ul.user-show__box__right__view__list__following__exist
                 - @user.following.each do |following|
-                  = link_to user_path(following.id), data: {"turbolinks"=>false} do
+                  = link_to user_path(following.id), data: {turbolinks: false} do
                     %li.user-show__box__right__view__list__following__exist__list
                       .user-show__box__right__view__list__following__exist__list__left
                         .user-show__box__right__view__list__following__exist__list__left__image
@@ -201,7 +201,7 @@
             - if @user.followers.present?
               %ul.user-show__box__right__view__list__followers__exist
                 - @user.followers.each do |follower|
-                  = link_to user_path(follower.id), data: {"turbolinks"=>false} do
+                  = link_to user_path(follower.id), data: {turbolinks: false} do
                     %li.user-show__box__right__view__list__followers__exist__list
                       .user-show__box__right__view__list__followers__exist__list__left
                         .user-show__box__right__view__list__followers__exist__list__left__image

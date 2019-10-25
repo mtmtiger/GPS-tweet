@@ -11,22 +11,22 @@
             .article-show__box__top__left__lists__user__name
               %p
                 ユーザー名
-              = link_to user_path(@article.user.id), data: {"turbolinks"=>false} do
+              = link_to user_path(@article.user.id), data: {turbolinks: false} do
                 = @article.user.name
             .article-show__box__top__left__lists__user__sex
               %p
                 性別
-              = link_to sex_users_path(sex: @article.user.sex), data: {"turbolinks"=>false} do
+              = link_to sex_users_path(sex: @article.user.sex), data: {turbolinks: false} do
                 = @article.user.sex
             .article-show__box__top__left__lists__user__age
               %p
                 年齢
-              = link_to age_users_path(age: @article.user.age), data: {"turbolinks"=>false} do
+              = link_to age_users_path(age: @article.user.age), data: {turbolinks: false} do
                 = @article.user.age
             .article-show__box__top__left__lists__user__prefecture
               %p
                 都道府県
-              = link_to prefecture_users_path(prefecture: @article.user.prefecture_id), data: {"turbolinks"=>false} do
+              = link_to prefecture_users_path(prefecture: @article.user.prefecture_id), data: {turbolinks: false} do
                 = @article.user.prefecture.name
           .article-show__box__top__left__lists__address
             %p
@@ -36,7 +36,7 @@
             .article-show__box__top__left__lists__map__text
               場所の詳細はボタンをクリック
             .article-show__box__top__left__lists__map__btn
-              = link_to map_article_path(@article), data: {"turbolinks"=>false} do
+              = link_to map_article_path(@article), data: {turbolinks: false} do
                 %button#article-show-map
                   地図を表示
           .article-show__box__top__left__lists__nice
@@ -55,7 +55,7 @@
               - elsif user_signed_in? && @article.user_id == current_user.id
                 %ul
                   %li
-                    = link_to edit_article_path(@article.id), id: "article-edit", data: {"turbolinks"=>false} do
+                    = link_to edit_article_path(@article.id), id: "article-edit", data: {turbolinks: false} do
                       .icon-article-edit
                       %p
                         編集
