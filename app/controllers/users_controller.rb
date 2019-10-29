@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def destroy
     sign_out @user
+    session[:root] = "on"
     redirect_to root_path
   end
 

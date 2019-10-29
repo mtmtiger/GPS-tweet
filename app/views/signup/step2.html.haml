@@ -1,40 +1,41 @@
-%div
-  =form_for @user, url: signup_index_path, method: :post do |f|
-    %table.signup-table
-      %caption
-        登録情報の確認
-      %tr
-        %th
-          お名前
-        %td
-          = session[:name]
-      %tr
-        %th
-          Eメール
-        %td
-          = session[:email]
-      %tr
-        %th
-          パスワード  
-        %td
-          = session[:password]
-      %tr
-        %th
-          性別
-        %td
-          = session[:sex]
-      %tr
-        %th
-          年齢  
-        %td
-          = session[:age]
-      %tr
-        %th
-          都道府県
-        %td
-          = Prefecture.find(session[:prefecture_id]).name
-    .signup-btns
-      = link_to :back do
-        %button
-          戻る
-      = f.button "登録する", type: "submit"
+.sign-up-step2
+  .sign-up-step2__box
+    %p.title
+      登録情報の確認
+    .sign-up-step2__box__sign-up#sign-up-view
+      = form_for @user, url: signup_index_path, method: :post do |f|
+        .sign-up-step2__box__sign-up__form__name
+          .sign-up-step2__box__sign-up__form__name__tag
+            ユーザーネーム：
+          .sign-up-step2__box__sign-up__form__name__text
+            = session[:name]
+        .sign-up-step2__box__sign-up__form__email
+          .sign-up-step2__box__sign-up__form__email__tag
+            メールアドレス：
+          .sign-up-step2__box__sign-up__form__email__text
+            = session[:email]
+        .sign-up-step2__box__sign-up__form__password
+          .sign-up-step2__box__sign-up__form__password__tag
+            パスワード：
+          .sign-up-step2__box__sign-up__form__password__text
+            = session[:password]
+        .sign-up-step2__box__sign-up__form__sex
+          .sign-up-step2__box__sign-up__form__sex__tag
+            性別：
+          .sign-up-step2__box__sign-up__form__sex__text
+            = session[:sex]
+        .sign-up-step2__box__sign-up__form__age
+          .sign-up-step2__box__sign-up__form__age__tag
+            年齢：
+          .sign-up-step2__box__sign-up__form__age__text
+            = session[:age]
+        .sign-up-step2__box__sign-up__form__prefecture
+          .sign-up-step2__box__sign-up__form__prefecture__tag
+            都道府県：
+          .sign-up-step2__box__sign-up__form__prefecture__text
+            = Prefecture.find(session[:prefecture_id]).name
+        .sign-up-step2__box__sign-up__form__btn#sign-up-btn
+          = link_to :back do
+            %button#return-btn
+              戻る
+          = f.button "登録する", type: "submit", id: "sign-up-submit-btn"

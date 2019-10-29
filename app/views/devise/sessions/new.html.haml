@@ -1,31 +1,59 @@
 .log-in
-  .log-in__bg
-    = image_tag('top-bg.jpg',class: "log-in-image")
-  .log-in__title
-    %h2 ログイン
-  .log-in__mark
-    .icon-user
-  .log-in__bg-mark
-    .icon-bg-pin
-  .log-in__form
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .log-in__form__email
-        = f.label :email do
-          .icon-email
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "e-mail"
-      .log-in__form__password
-        = f.label :password do
-          .icon-password
-        = f.password_field :password, autocomplete: "current-password", placeholder: "password"
-      .log-in__form__btn
-        = f.submit "ログイン", class: "log-in-btn"
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .log-in__form__test-log-in
-        .log-in__form__test-log-in__email
-          = f.email_field :email, autocomplete: "email", type: "hidden", id: "test-user-email"
-        .log-in__form__test-log-in__password
-          = f.password_field :password, autocomplete: "current-password", type: "hidden", id: "test-user-password"
-        .log-in__form__test-log-in__submit
-          = f.submit "簡単ログイン", id: "test-user-log-in-btn"
-
-
+  .log-in__box
+    = link_to root_path do
+      %p
+        GPS-Tweet
+    %ul.log-in__box__tab#log-in-tab
+      %li.log-in__box__tab__list.active#log-in-menu
+        ログイン
+      %li.log-in__box__tab__list#sign-up-menu
+        新規登録
+    .log-in__box__log-in#log-in-view
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .log-in__box__log-in__form__email
+          = f.label :email do
+            .icon-email
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required: true
+        .log-in__box__log-in__form__password
+          = f.label :password do
+            .icon-password
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード(英数字6文字以上12文字以内", required: true
+        .log-in__box__log-in__form__btn
+          = f.submit "ログイン", class: "log-in-btn"
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .log-in__box__log-in__form__test-log-in
+          .log-in__box__log-in__form__test-log-in__email
+            = f.email_field :email, autocomplete: "email", type: "hidden", id: "test-user-email"
+          .log-in__box__log-in__form__test-log-in__password
+            = f.password_field :password, autocomplete: "current-password", type: "hidden", id: "test-user-password"
+          .log-in__box__log-in__form__test-log-in__submit
+            = f.submit "簡単ログイン", id: "test-user-log-in-btn"
+    .log-in__box__sign-up#sign-up-view
+      = form_for @user, url: step2_signup_index_path, method: :get do |f|
+        .log-in__box__sign-up__form__name
+          = f.label :name do
+            .icon-user
+          = f.text_field :name, autofocus: true, autocomplete: "name", maxlength: "8", placeholder: "ユーザーネーム(8文字以内", required: true
+        .log-in__box__sign-up__form__email
+          = f.label :email do
+            .icon-email
+          = f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", required: true
+        .log-in__box__sign-up__form__password
+          = f.label :password do
+            .icon-password
+          = f.password_field :password, autocomplete: "new-password", maxlength: "12", placeholder: "パスワード(英数字6文字以上12文字以内", required: true
+        .log-in__box__sign-up__form__password-confirmation
+          = f.label :password_confirmation do
+            .icon-password
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワードの確認", required: true
+        .log-in__box__sign-up__form__sex
+          = f.label :sex, :"性別", class: "select-label"
+          = f.select :sex, options_for_select(User.sexes.keys), {}, class: "select-default"
+        .log-in__box__sign-up__form__age
+          = f.label :age, :"年齢", class: "select-label"
+          = f.select :age, options_for_select(User.ages.keys), {}, class: "select-default"
+        .log-in__box__sign-up__form__prefecture
+          = f.label :prefecture_id, :"都道府県", class: "select-label"
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "select-default"
+        .log-in__box__sign-up__form__sign-up#sign-up-btn
+          = f.submit "新規登録", class: "sign-up-submit"

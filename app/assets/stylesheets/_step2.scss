@@ -1,0 +1,169 @@
+.sign-up-step2 {
+  height: calc(100% - 90px);
+  width: 100%;
+  background-image: url("mains-top-bg.jpg");
+  background-size: cover;
+  background-position: 100% 100%;
+  &__box {
+    height: 70%;
+    width: 60%;
+    margin: 0 auto;
+    .title {
+      display: block;
+      font-size: 40px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 60px;
+    }
+    &__sign-up {
+      height: 85%;
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #000;
+      position: relative;
+      background-color: #fff;
+      &__form {
+        height: 100%;
+        width: 100%;
+        &__name {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 10%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__email {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__password {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__sex {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__age {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__prefecture {
+          width: 70%;
+          display: flex;
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          &__tag, &__text {
+            font-size: 20px;
+          }
+        }
+        &__btn {
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          top: 75%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          #return-btn {
+            height: 50px;
+            width: 140px;
+            color: #fff;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+            background-color: #ff4444;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+          }
+          #return-btn:active {
+            height: 50px;
+            width: 140px;
+            color: #fff;
+            padding: 0;
+            cursor: pointer;
+            background-color: #ff4400;
+            border: 2px solid #ff3333;
+            border-radius: 20px;
+            box-shadow: 0 5px #ff0000;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
+          }
+          #sign-up-submit-btn {
+            height: 50px;
+            width: 140px;
+            color: #fff;
+            outline: none;
+            padding: 0;
+            margin-left: 20px;
+            cursor: pointer;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+          }
+          #sign-up-submit-btn:active {
+            height: 50px;
+            width: 140px;
+            color: #fff;
+            padding: 0;
+            margin-left: 20px;
+            cursor: pointer;
+            background-color: #4444ff;
+            border: 2px solid #3333ff;
+            border-radius: 20px;
+            box-shadow: 0 5px #0000ff;
+            animation: btn-push 0.05s ease-in both;
+            @keyframes btn-push {
+              0% {}
+              100% {
+                transform: translateY(5px);
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
