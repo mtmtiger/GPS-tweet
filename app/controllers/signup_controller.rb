@@ -29,7 +29,7 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else
-      redirect_to step1_signup_index_path
+      redirect_to new_user_registration_path
     end
 
     def done

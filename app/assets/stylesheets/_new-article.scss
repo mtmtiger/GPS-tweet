@@ -1,6 +1,5 @@
 @mixin item-have() {
   ul {
-    height: 156px;
     display: flex;
     .upload-article {
       width: 33%;
@@ -149,9 +148,17 @@
           }
           &__image {
             padding: 10px 0;
-            display: flex;
+            #article-images {
+              display: flex;
+            }
+            #article-images:hover {
+              color: #ff0000;
+            }
             .file_image {
               display: none;
+            }
+            &__text {
+              display: flex;
             }
           }
           &__text {
@@ -179,7 +186,9 @@
             }
           }
           &__preview {
+            height: 147px;
             width: 100%;
+            border: 1px solid #ccc;
             @include item-have();
           }
         }

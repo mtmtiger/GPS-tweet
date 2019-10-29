@@ -36,6 +36,11 @@
         font-size: 100px;
       }
     }
+    &__title:hover {
+      p {
+        color: #ff0000;
+      }
+    }
     &__right-bg {
       height: 0;
       width: 0;

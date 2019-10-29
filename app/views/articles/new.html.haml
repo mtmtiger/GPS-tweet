@@ -38,7 +38,9 @@
             .new-article__box__modal__right__form__image
               =f.label :images, id: "article-images" do
                 .icon-new-images
-                  クリックすると画像が選べます(1〜3枚まで)
+                .new-article__box__modal__right__form__image__text
+                  %p
+                    クリックすると画像が選べます(1〜3枚まで)
                   %span.require
                     必須
               =f.file_field :images, multiple: true, class: 'file_image', accept: "image/jpeg, image/png"

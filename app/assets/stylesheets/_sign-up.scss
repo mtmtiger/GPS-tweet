@@ -1,4 +1,4 @@
-.log-in {
+.sign-up {
   height: calc(100% - 90px);
   width: 100%;
   background-image: url("mains-top-bg.jpg");
@@ -41,7 +41,6 @@
       border: 2px solid #000;
       position: relative;
       background-color: #fff;
-      display: none;
       &__form {
         height: 100%;
         width: 100%;
@@ -306,6 +305,7 @@
       border: 2px solid #000;
       position: relative;
       background-color: #fff;
+      display: none;
       &__form {
         height: 100%;
         width: 100%;

@@ -5,3 +5,9 @@
     .done-data__box__text
       %p
         登録が完了しました
+      %p
+        早速記事を投稿してみましょう
+    .done-data__box__btn
+      = link_to new_article_path, data: {turbolinks: false} do
+        %button#articles-index-new-btn
+          投稿ページへ
