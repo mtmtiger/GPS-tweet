@@ -7,9 +7,9 @@
         ユーザー一覧
     %ul.user-index__box__users#users-list
       -@users.each do |user|
-        %li.user-index__box__users__list
+        %li.user-index__box__users__list#user-list
           = link_to user_path(user.id), class: "user-index__box__users__list__main", data: {turbolinks: false} do
-            .user-index__box__users__list__image
+            .user-index__box__users__list__image#user-image
               - if user.image.attached?
                 = image_tag(user.image, class: "user-image")
               - else

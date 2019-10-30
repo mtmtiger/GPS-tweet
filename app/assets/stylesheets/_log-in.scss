@@ -1,7 +1,7 @@
 .log-in {
   height: calc(100% - 90px);
   width: 100%;
-  background-image: url("mains-top-bg.jpg");
+  background-image: asset-url("mains-top-bg.jpg");
   background-size: cover;
   background-position: 100% 100%;
   &__box {
