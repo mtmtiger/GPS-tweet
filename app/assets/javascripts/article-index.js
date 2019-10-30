@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load",function() {
   $(function(){
-    $(document).on('mousemove', "#article-index-list a div:last-child", function(e){
+    $(document).on('mousemove', "#mouse-offset", function(e){
       let divX = e.offsetX
       let divY = e.offsetY
       let centerX = $(this).width() * 0.5

@@ -52,6 +52,13 @@
           border-radius: 50%;
         }
       }
+      &__image:hover {
+        height: 150px;
+        width: 150px;
+        margin: 0 auto;
+        padding: 5px 0;
+       
+      }
       &__name {
         font-size: 20px;
         text-align: center;
@@ -121,15 +128,28 @@
     &__list:hover {
       animation: list-shadow 0.2s linear both;
       @keyframes list-shadow {
-      0% {
-        transform: translateY(0);
-        background-color: #fff;
+        0% {
+          transform: translateY(0);
+          background-color: #fff;
+        }
+        100% {
+          transform: translateY(-5px);
+          background-color: #fffeef;
+          box-shadow: 0 3px 6px #333;
+        }
       }
-      100% {
-        transform: translateY(-5px);
-        background-color: #fffeef;
-        box-shadow: 0 3px 6px #333;
-      }
+      .user-image {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        animation: user-image 0.2s linear both;
+        @keyframes user-image {
+          0% {
+          }
+          100% {
+            box-shadow: 0 2px 10px #333;
+          }
+        }
       }
     }
   }
