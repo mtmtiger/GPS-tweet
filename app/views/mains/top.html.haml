@@ -9,6 +9,13 @@
           GPS-Tweet
     .mains-top__box__right-bg
     %ul.mains-top__box__menu
+      = link_to introduction_mains_path, class: "mains-top__box__menu__link", data: {turbolinks: false} do
+        %li.mains-top__box__menu__link__list
+          .mains-top__box__menu__link__list__span
+            %span.mains-top__box__menu__link__list__span__red
+            %span.mains-top__box__menu__link__list__span__blue
+          %p
+            Introduction
       = link_to articles_path, class: "mains-top__box__menu__link", data: {turbolinks: false} do
         %li.mains-top__box__menu__link__list
           .mains-top__box__menu__link__list__span

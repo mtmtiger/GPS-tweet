@@ -1,0 +1,70 @@
+.introduction
+  .introduction__box
+    %ul.introduction__box__lists#introduction-lists
+      %li.introduction__box__lists__list1
+        .introduction__box__lists__list1__title
+          %p
+            GPS-Tweetへようこそ
+        .introduction__box__lists__list1__main
+          %p
+            このサイトはGoogle Maps上で選んだ場所の記事を投稿するサイトです
+          %p
+            あなたが紹介したいお店や観光名所などを投稿しよう
+          %p
+            ユーザーが投稿した記事にいいね！をしたり
+          %p
+            ユーザーをフォローすることができます
+          %p
+            詳しい投稿方法が知りたい方は下の次へをクリックしてください
+      %li.introduction__box__lists__list2
+        .introduction__box__lists__list2__title
+          %p
+            記事の投稿方法1
+        .introduction__box__lists__list2__main
+          %p
+            ログイン状態でトップページやヘッダーメニューにあるPostをクリック
+          %p
+            <strong>例</strong>）スカイツリーについて投稿したい場合
+          .introduction__box__lists__list2__main__image
+            = image_tag("introduction-1.png", class: "introduction-1")
+            .icon-right1
+            .icon-right2
+            .introduction__box__lists__list2__main__image__text
+              スカイツリーと入力してボタンをクリック
+              = image_tag("introduction-2.png", class: "introduction-2")
+              もしくは
+              = image_tag("introduction-3.png", class: "introduction-3")
+              Map上を直接クリック
+          %p
+            正しく指定できていれば<strong>座標を決定</strong>ボタンをクリック
+          = image_tag("introduction-4.png", class: "introduction-4")
+      %li.introduction__box__lists__list3
+        .introduction__box__lists__list3__title
+          %p
+            記事の投稿方法2
+        .introduction__box__lists__list3__main
+          %p
+            下の画像部分をクリックして自身の媒体から画像を選択してください<strong>(最大3枚)</strong>
+          = image_tag("introduction-5.png", class: "introduction-5")
+          %p
+            下のように必須項目を記入していただき、<strong>投稿する</strong>ボタンで投稿完了です
+          = image_tag("introduction-6.png", class: "introduction-6")
+          %p
+            以上で説明は終了です。早速投稿してみましょう
+          .introduction__box__lists__list3__main__post
+            = link_to new_article_path do
+              %button#introduction-post
+                投稿ページへ
+
+      
+.introduction-btn
+  .introduction-btn__prev
+    %button#introduction-prev
+      前へ
+  .introduction-btn__top
+    = link_to root_path do
+      %button#introduction-top
+        トップページへ
+  .introduction-btn__next
+    %button#introduction-next
+      次へ

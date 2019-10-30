@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :mains do
     collection do
       get :top
+      get :introduction
     end
   end
   resources :signup do

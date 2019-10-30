@@ -8,4 +8,7 @@ class MainsController < ApplicationController
       redirect_to mains_path
     end
   end
+
+  def introduction
+  end
 end
