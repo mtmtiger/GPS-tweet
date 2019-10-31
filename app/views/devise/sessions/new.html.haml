@@ -33,7 +33,7 @@
         .log-in__box__sign-up__form__name
           = f.label :name do
             .icon-user
-          = f.text_field :name, autofocus: true, autocomplete: "name", maxlength: "8", placeholder: "ユーザーネーム(8文字以内", required: true
+          = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザーネーム(8文字以内", required: true
         .log-in__box__sign-up__form__email
           = f.label :email do
             .icon-email
@@ -41,7 +41,7 @@
         .log-in__box__sign-up__form__password
           = f.label :password do
             .icon-password
-          = f.password_field :password, autocomplete: "new-password", maxlength: "12", placeholder: "パスワード(英数字6文字以上12文字以内", required: true
+          = f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(英数字6文字以上12文字以内", required: true
         .log-in__box__sign-up__form__password-confirmation
           = f.label :password_confirmation do
             .icon-password

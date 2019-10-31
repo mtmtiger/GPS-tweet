@@ -18,6 +18,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  validates :name, presence: true, length: { maximum: 8 }
+  validates :password, presence: true, length: { maximum: 12 }
+  validates :profile, length: { maximum: 100 }
+  
     # ユーザーをフォローする
     def follow(other_user)
       active_relationships.create(followed_id: other_user.id)
