@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # before_action :move_to_index, except: [:index, :show, :map, :search]
+  before_action :move_to_index, except: [:index, :show, :map, :search]
   def index
     @articles = Article.all.order("created_at DESC").page(params[:page]).per(8)
   end
