@@ -55,7 +55,7 @@
       %ul.header__icon__top__lists
         - if user_signed_in?
           %li.header__icon__top__lists__current
-            = link_to mains_path , method: "get", class: "header-menu-icon", data: {turbolinks: false} do
+            = link_to user_path(current_user.id) , method: "get", class: "header-menu-icon", data: {turbolinks: false} do
               %p
                 = "ようこそ #{current_user.name} さん"
         -else
