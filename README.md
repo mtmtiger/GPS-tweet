@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Google Maps APIを用いて、Mapの情報を付与した記事を投稿できるアプリです\
+主にお店や観光名所などに関して投稿します\
+誰もが知っている場所以外にも、あまり知られていないけれど良いお店なども記事にして共有していきましょう\
+Map登録の地点を選択する際には、Mapの上にある検索フォームに場所の名前を入力していただくか、Map上の登録したい地点を直接クリックしてください\
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+記事に対していいね！をしたり、ユーザーをフォローすることで、マイページから素早くその記事やユーザーへのリンクで遷移できます
